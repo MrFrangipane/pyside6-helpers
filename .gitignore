@@ -1,3 +1,10 @@
+# Jetbrains
+.idea/
+
+# Fileorganizer
+_documentation/
+.fileorganizer
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
