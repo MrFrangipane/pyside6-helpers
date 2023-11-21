@@ -1,6 +1,8 @@
 # Jetbrains
 .idea/
 
+/__g*
+
 # Fileorganizer
 _documentation/
 .fileorganizer
