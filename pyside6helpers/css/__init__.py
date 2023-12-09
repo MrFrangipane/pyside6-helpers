@@ -7,7 +7,7 @@ _HERE = os.path.dirname(__file__)
 
 
 def _make_resource_filepath(filename):
-    return os.path.join(_HERE, "resources", filename)
+    return os.path.join(os.path.dirname(_HERE), "resources", filename)
 
 
 def load_onto(q_widget: QWidget):
