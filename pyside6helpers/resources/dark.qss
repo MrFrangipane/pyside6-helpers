@@ -39,23 +39,56 @@ QToolTip {
     background-color: rgb(66, 66, 66);
 }
 QTabWidget::pane {
-    background-color: rgb(104, 104, 104);
+    background-color: transparent;
     border-radius: 2px;
 }
 
 QTabBar {
-    background-color: rgb(93, 93, 93);
+    background-color: transparent;
 }
 
 QTabBar::tab {
     color: rgb(232, 232, 232);
     background-color: rgb(104, 104, 104);
-    border-radius: 2px;
-    padding: 0;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 1px;
+}
+
+QTabBar::tab:top,
+QTabBar::tab:bottom {
+    padding-left: 7px;
+    padding-right: 7px;
     height: 22;
+    margin-left: 1px;
     margin-right: 1px;
+}
+
+QTabBar::tab:top {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 6px;
+}
+
+QTabBar::tab:bottom {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 2px;
+}
+
+QTabBar::tab:left,
+QTabBar::tab:right {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    width: 22;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+QTabBar::tab:left {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 6px;
+}
+
+QTabBar::tab:right {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 6px;
 }
 
 QTabBar::tab:hover {
@@ -71,6 +104,34 @@ QTabBar::tab:pressed {
 QTabBar::tab:selected {
     background-color: rgb(75, 165, 193);
     color: rgb(232, 232, 232);
+}
+
+QTabBar::tab:selected:left,
+QTabBar::tab:selected:right {
+    border-bottom: 2px solid rgb(232, 232, 232);
+    margin-top: 1px;
+}
+
+QTabBar::tab:selected:right {
+    border-bottom-right-radius: 2px;
+}
+
+QTabBar::tab:selected:left {
+    border-bottom-left-radius: 2px;
+}
+
+QTabBar::tab:selected:top,
+QTabBar::tab:selected:bottom {
+    border-left: 2px solid rgb(232, 232, 232);
+    margin-left: 1px;
+}
+
+QTabBar::tab:selected:top {
+    border-top-right-radius: 2px;
+}
+
+QTabBar::tab:selected:bottom {
+    border-bottom-left-radius: 2px;
 }
 
 QTabBar::tab:disabled {
@@ -98,7 +159,7 @@ QGroupBox {
   background-color: rgba(255, 255, 255, 15);
   border: none;
   margin-top: 9px;
-  padding-top: 5px;
+  padding-top: 7px;
 }
 
 QGroupBox::title {
@@ -108,15 +169,13 @@ QGroupBox::title {
     background: transparent;
    padding: 2px;
 }
-
-/* Button/LineEdit */
 QPushButton, QLineEdit {
     color: rgb(232, 232, 232);
     background-color: rgb(104, 104, 104);
     border-radius: 2px;
     padding: 0;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
     height: 22;
 }
 
@@ -252,12 +311,12 @@ QScrollBar {
 
 QScrollBar:vertical {
     width: 13px;
-    margin: 0px 0px 0px 5px;
+    margin: 0px 0px 0px 7px;
 }
 
 QScrollBar:horizontal {
     height: 13px;
-    margin: 5px 0px 0px 0px;
+    margin: 7px 0px 0px 0px;
 }
 
 QScrollBar::add-page, QScrollBar::sub-page {
@@ -293,8 +352,8 @@ QProgressBar {
 }
 
 QProgressBar:horizontal {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 7px;
+    margin-bottom: 7px;
     height: 0;
 }
 
@@ -310,7 +369,7 @@ QProgressBar::chunk {
 QLabel {
     background-color: transparent;
     color: rgb(185, 185, 185);
-    padding: 5px;
+    padding: 7px;
 }
 
 QLabel:disabled {
@@ -379,8 +438,8 @@ QSpinBox {
     height: 22px;
     background-color: rgb(104, 104, 104);
     padding-left: 4px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
     border: 2px solid rgb(104, 104, 104);
 }
 
@@ -417,15 +476,15 @@ QComboBox {
     background-color: rgb(104, 104, 104);
     selection-color: rgb(232, 232, 232);
     selection-background-color: rgb(75, 165, 193);
-    padding: 5px;
+    padding: 7px;
     combobox-popup: 0;
-    border-bottom-right-radius: 8px;
+    border-bottom-right-radius: 6px;
 }
 
 QComboBox::drop-down {
     background-color: rgb(140, 140, 140);
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 QComboBox::drop-down:hover {
@@ -466,7 +525,7 @@ QMenu::separator {
 
 QMenuBar {
     background-color: rgb(66, 66, 66);
-    spacing: 5px;
+    spacing: 7px;
 }
 
 QMenuBar:disabled {
@@ -474,13 +533,13 @@ QMenuBar:disabled {
 }
 
 QMenuBar::item {
-    padding: 5px;
+    padding: 7px;
     border-radius: 0px;
 }
 
 QMenuBar::item:selected {
     background-color: rgb(75, 165, 193);
-    padding: 5px;
+    padding: 7px;
     border-radius: 0px;
 }
 
@@ -511,7 +570,7 @@ QToolButton {
     width: 20px;
     height: 20px;
     border-radius: 2px;
-    padding : 5px;
+    padding : 7px;
 }
 
 QToolButton:hover {
@@ -528,7 +587,7 @@ QLabel[isTitle="true"] {
 *[sideStroked="true"], QLabel[isTitle="true"] {
     border-style: solid;
     border-color: rgb(75, 165, 193);
-    border-left-width: 5px;
+    border-left-width: 7px;
     border-radius: 0px;
 }
 
