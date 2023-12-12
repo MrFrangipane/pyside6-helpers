@@ -6,4 +6,6 @@ This project is alpha: expect breaking changes
 
 # Icons
 
-[See this page](icons.md) 
+Icons made by https://www.freepik.com (https://www.flaticon.com)
+
+See [this page](icons.md) for usage and reference
