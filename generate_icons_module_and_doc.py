@@ -1,4 +1,6 @@
-"""Generate a python module for PySide6 with all icons"""
+"""Generate a python module for PySide6 with all icons
+
+This is ugly as it gets"""
 import os.path
 import logging
 from glob import glob
@@ -10,6 +12,7 @@ logging.basicConfig(level=logging.INFO)
 _logger = logging.getLogger("Icon Generator")
 
 
+_DOC_COLUMN_COUNT = 7
 _MODULE = """from functools import cache
 
 from PySide6.QtCore import Qt
@@ -45,10 +48,10 @@ from pyside6helpers import icons
 icon_reload = icons.refresh()
 ````
 
-| Name         | Icon                                                 | 
-|--------------|------------------------------------------------------|
 """
-_DOC_LINE_TEMPLATE = "| `{name_function}()` | ![](pyside6helpers/resources/icons/{name_file}.png) |\n"
+_DOC += ("| Name | Icon " * _DOC_COLUMN_COUNT) + "|\n"
+_DOC += ("|------|------" * _DOC_COLUMN_COUNT) + "|\n"
+_DOC_LINE_TEMPLATE = "| `{name_function}()` | ![](pyside6helpers/resources/icons/{name_file}.png) "
 
 
 _logger.info(f"reset module")
@@ -57,16 +60,40 @@ _logger.info(f"reset doc")
 
 module = _MODULE
 doc = _DOC
-for icon in glob(make_resource_path("icons/*.png")):
+column = 0
+doc_line = ""
+icons = glob(make_resource_path("icons/*.png"))
+for index, icon in enumerate(icons):
     name_file = os.path.basename(icon)
     name_file = os.path.splitext(name_file)[0]
 
     name_function = name_file.replace('-', '_')
 
-    _logger.info(f"added {name_file}")
+    _logger.info(f"added {name_file} column {column}")
 
+    #
+    # Module
     module += _FUNCTION_TEMPLATE.format(name_function=name_function, name_file=name_file)
-    doc += _DOC_LINE_TEMPLATE.format(name_function=name_function, name_file=name_file)
+
+    #
+    # Doc
+    if column == 0:
+        doc_line = _DOC_LINE_TEMPLATE.format(name_function=name_function, name_file=name_file)
+        column += 1
+
+    elif column < _DOC_COLUMN_COUNT:
+        doc_line += _DOC_LINE_TEMPLATE.format(name_function=name_function, name_file=name_file)
+        column += 1
+
+    if column == _DOC_COLUMN_COUNT:
+        column = 0
+        doc_line += "|\n"
+        doc += doc_line
+    elif index == len(icons) - 1:
+        doc += doc_line
+
+if column < _DOC_COLUMN_COUNT:
+    doc += ("|   |   " * (_DOC_COLUMN_COUNT - column)) + "|\n"
 
 
 module_filepath = "pyside6helpers/icons.py"
