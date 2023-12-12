@@ -49,9 +49,9 @@ icon_reload = icons.refresh()
 ````
 
 """
-_DOC += ("| Name | Icon " * _DOC_COLUMN_COUNT) + "|\n"
+_DOC += ("| Icon | Name " * _DOC_COLUMN_COUNT) + "|\n"
 _DOC += ("|------|------" * _DOC_COLUMN_COUNT) + "|\n"
-_DOC_LINE_TEMPLATE = "| `{name_function}()` | ![](pyside6helpers/resources/icons/{name_file}.png) "
+_DOC_LINE_TEMPLATE = "| ![](pyside6helpers/resources/icons/{name_file}.png) | `{name_function}()` "
 
 
 _logger.info(f"reset module")
