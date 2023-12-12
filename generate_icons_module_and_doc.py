@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 _logger = logging.getLogger("Icon Generator")
 
 
-_DOC_COLUMN_COUNT = 7
+_DOC_COLUMN_COUNT = 4
 _MODULE = """from functools import cache
 
 from PySide6.QtCore import Qt
