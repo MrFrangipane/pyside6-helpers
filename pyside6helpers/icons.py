@@ -1,499 +1,509 @@
 from functools import cache
 
-from PySide6.QtGui import QIcon
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon, QPixmap
 from pyside6helpers.resources import make_resource_path
 
 
+def _make_white(filepath):
+    pixmap = QPixmap(filepath)
+    mask = pixmap.mask()
+    white_pixmap = QPixmap(pixmap.size())
+    white_pixmap.fill(Qt.white)
+    white_pixmap.setMask(mask)
+    return white_pixmap
+
+
 @cache
-def align_center():
-    return QIcon(make_resource_path("icons/align_center.png"))
+def align_center() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/align-center.png")))
 
 
 @cache
-def align_right():
-    return QIcon(make_resource_path("icons/align_right.png"))
+def align_right() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/align-right.png")))
 
 
 @cache
-def back():
-    return QIcon(make_resource_path("icons/back.png"))
+def back() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/back.png")))
 
 
 @cache
-def bar_chart():
-    return QIcon(make_resource_path("icons/bar_chart.png"))
+def bar_chart() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/bar-chart.png")))
 
 
 @cache
-def barcode():
-    return QIcon(make_resource_path("icons/barcode.png"))
+def barcode() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/barcode.png")))
 
 
 @cache
-def book():
-    return QIcon(make_resource_path("icons/book.png"))
+def book() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/book.png")))
 
 
 @cache
-def bookmark():
-    return QIcon(make_resource_path("icons/bookmark.png"))
+def bookmark() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/bookmark.png")))
 
 
 @cache
-def briefcase():
-    return QIcon(make_resource_path("icons/briefcase.png"))
+def briefcase() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/briefcase.png")))
 
 
 @cache
-def calendar():
-    return QIcon(make_resource_path("icons/calendar.png"))
+def calendar() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/calendar.png")))
 
 
 @cache
-def cancel():
-    return QIcon(make_resource_path("icons/cancel.png"))
+def cancel() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/cancel.png")))
 
 
 @cache
-def certificate():
-    return QIcon(make_resource_path("icons/certificate.png"))
+def certificate() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/certificate.png")))
 
 
 @cache
-def chat():
-    return QIcon(make_resource_path("icons/chat.png"))
+def chat() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/chat.png")))
 
 
 @cache
-def check():
-    return QIcon(make_resource_path("icons/check.png"))
+def check() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/check.png")))
 
 
 @cache
-def clock():
-    return QIcon(make_resource_path("icons/clock.png"))
+def clock() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/clock.png")))
 
 
 @cache
-def cloud_computing():
-    return QIcon(make_resource_path("icons/cloud_computing.png"))
+def cloud_computing() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/cloud-computing.png")))
 
 
 @cache
-def credit_card():
-    return QIcon(make_resource_path("icons/credit_card.png"))
+def credit_card() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/credit-card.png")))
 
 
 @cache
-def dashboard():
-    return QIcon(make_resource_path("icons/dashboard.png"))
+def dashboard() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/dashboard.png")))
 
 
 @cache
-def disabled():
-    return QIcon(make_resource_path("icons/disabled.png"))
+def disabled() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/disabled.png")))
 
 
 @cache
-def diskette():
-    return QIcon(make_resource_path("icons/diskette.png"))
+def diskette() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/diskette.png")))
 
 
 @cache
-def dislike():
-    return QIcon(make_resource_path("icons/dislike.png"))
+def dislike() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/dislike.png")))
 
 
 @cache
-def down_arrow():
-    return QIcon(make_resource_path("icons/down_arrow.png"))
+def down_arrow() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/down-arrow.png")))
 
 
 @cache
-def download():
-    return QIcon(make_resource_path("icons/download.png"))
+def download() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/download.png")))
 
 
 @cache
-def earth_grid():
-    return QIcon(make_resource_path("icons/earth_grid.png"))
+def earth_grid() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/earth-grid.png")))
 
 
 @cache
-def eject():
-    return QIcon(make_resource_path("icons/eject.png"))
+def eject() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/eject.png")))
 
 
 @cache
-def email():
-    return QIcon(make_resource_path("icons/email.png"))
+def email() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/email.png")))
 
 
 @cache
-def equalizer():
-    return QIcon(make_resource_path("icons/equalizer.png"))
+def equalizer() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/equalizer.png")))
 
 
 @cache
-def error():
-    return QIcon(make_resource_path("icons/error.png"))
+def error() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/error.png")))
 
 
 @cache
-def exclamation():
-    return QIcon(make_resource_path("icons/exclamation.png"))
+def exclamation() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/exclamation.png")))
 
 
 @cache
-def file():
-    return QIcon(make_resource_path("icons/file.png"))
+def file() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/file.png")))
 
 
 @cache
-def filter():
-    return QIcon(make_resource_path("icons/filter.png"))
+def filter() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/filter.png")))
 
 
 @cache
-def flag():
-    return QIcon(make_resource_path("icons/flag.png"))
+def flag() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/flag.png")))
 
 
 @cache
-def flash():
-    return QIcon(make_resource_path("icons/flash.png"))
+def flash() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/flash.png")))
 
 
 @cache
-def folder():
-    return QIcon(make_resource_path("icons/folder.png"))
+def folder() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/folder.png")))
 
 
 @cache
-def headphone():
-    return QIcon(make_resource_path("icons/headphone.png"))
+def headphone() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/headphone.png")))
 
 
 @cache
-def heart():
-    return QIcon(make_resource_path("icons/heart.png"))
+def heart() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/heart.png")))
 
 
 @cache
-def home():
-    return QIcon(make_resource_path("icons/home.png"))
+def home() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/home.png")))
 
 
 @cache
-def image():
-    return QIcon(make_resource_path("icons/image.png"))
+def image() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/image.png")))
 
 
 @cache
-def inbox():
-    return QIcon(make_resource_path("icons/inbox.png"))
+def inbox() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/inbox.png")))
 
 
 @cache
-def information():
-    return QIcon(make_resource_path("icons/information.png"))
+def information() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/information.png")))
 
 
 @cache
-def justify():
-    return QIcon(make_resource_path("icons/justify.png"))
+def justify() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/justify.png")))
 
 
 @cache
-def laptop():
-    return QIcon(make_resource_path("icons/laptop.png"))
+def laptop() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/laptop.png")))
 
 
 @cache
-def left_align():
-    return QIcon(make_resource_path("icons/left_align.png"))
+def left_align() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/left-align.png")))
 
 
 @cache
-def left_arrow():
-    return QIcon(make_resource_path("icons/left_arrow.png"))
+def left_arrow() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/left-arrow.png")))
 
 
 @cache
-def levels():
-    return QIcon(make_resource_path("icons/levels.png"))
+def levels() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/levels.png")))
 
 
 @cache
-def like():
-    return QIcon(make_resource_path("icons/like.png"))
+def like() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/like.png")))
 
 
 @cache
-def link():
-    return QIcon(make_resource_path("icons/link.png"))
+def link() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/link.png")))
 
 
 @cache
-def list():
-    return QIcon(make_resource_path("icons/list.png"))
+def list() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/list.png")))
 
 
 @cache
-def login():
-    return QIcon(make_resource_path("icons/login.png"))
+def login() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/login.png")))
 
 
 @cache
-def logout():
-    return QIcon(make_resource_path("icons/logout.png"))
+def logout() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/logout.png")))
 
 
 @cache
-def menu():
-    return QIcon(make_resource_path("icons/menu.png"))
+def menu() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/menu.png")))
 
 
 @cache
-def minus():
-    return QIcon(make_resource_path("icons/minus.png"))
+def minus() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/minus.png")))
 
 
 @cache
-def more():
-    return QIcon(make_resource_path("icons/more.png"))
+def more() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/more.png")))
 
 
 @cache
-def move():
-    return QIcon(make_resource_path("icons/move.png"))
+def move() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/move.png")))
 
 
 @cache
-def mute():
-    return QIcon(make_resource_path("icons/mute.png"))
+def mute() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/mute.png")))
 
 
 @cache
-def next():
-    return QIcon(make_resource_path("icons/next.png"))
+def next() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/next.png")))
 
 
 @cache
-def notification():
-    return QIcon(make_resource_path("icons/notification.png"))
+def notification() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/notification.png")))
 
 
 @cache
-def padlock():
-    return QIcon(make_resource_path("icons/padlock.png"))
+def padlock() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/padlock.png")))
 
 
 @cache
-def pause():
-    return QIcon(make_resource_path("icons/pause.png"))
+def pause() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/pause.png")))
 
 
 @cache
-def pencil():
-    return QIcon(make_resource_path("icons/pencil.png"))
+def pencil() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/pencil.png")))
 
 
 @cache
-def photo_camera():
-    return QIcon(make_resource_path("icons/photo_camera.png"))
+def photo_camera() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/photo-camera.png")))
 
 
 @cache
-def placeholder():
-    return QIcon(make_resource_path("icons/placeholder.png"))
+def placeholder() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/placeholder.png")))
 
 
 @cache
-def play_button():
-    return QIcon(make_resource_path("icons/play_button.png"))
+def play_button() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/play-button.png")))
 
 
 @cache
-def plus():
-    return QIcon(make_resource_path("icons/plus.png"))
+def plus() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/plus.png")))
 
 
 @cache
-def power_button():
-    return QIcon(make_resource_path("icons/power_button.png"))
+def power_button() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/power-button.png")))
 
 
 @cache
-def print():
-    return QIcon(make_resource_path("icons/print.png"))
+def print() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/print.png")))
 
 
 @cache
-def push_pin():
-    return QIcon(make_resource_path("icons/push_pin.png"))
+def push_pin() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/push-pin.png")))
 
 
 @cache
-def qr_code():
-    return QIcon(make_resource_path("icons/qr_code.png"))
+def qr_code() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/qr-code.png")))
 
 
 @cache
-def question_bubble():
-    return QIcon(make_resource_path("icons/question_bubble.png"))
+def question_bubble() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/question-bubble.png")))
 
 
 @cache
-def question():
-    return QIcon(make_resource_path("icons/question.png"))
+def question() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/question.png")))
 
 
 @cache
-def refresh():
-    return QIcon(make_resource_path("icons/refresh.png"))
+def refresh() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/refresh.png")))
 
 
 @cache
-def resize():
-    return QIcon(make_resource_path("icons/resize.png"))
+def resize() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/resize.png")))
 
 
 @cache
-def right_arrow():
-    return QIcon(make_resource_path("icons/right_arrow.png"))
+def right_arrow() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/right-arrow.png")))
 
 
 @cache
-def screenshot():
-    return QIcon(make_resource_path("icons/screenshot.png"))
+def screenshot() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/screenshot.png")))
 
 
 @cache
-def search():
-    return QIcon(make_resource_path("icons/search.png"))
+def search() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/search.png")))
 
 
 @cache
-def settings():
-    return QIcon(make_resource_path("icons/settings.png"))
+def settings() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/settings.png")))
 
 
 @cache
-def share():
-    return QIcon(make_resource_path("icons/share.png"))
+def share() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/share.png")))
 
 
 @cache
-def shield():
-    return QIcon(make_resource_path("icons/shield.png"))
+def shield() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/shield.png")))
 
 
 @cache
-def shopping_cart():
-    return QIcon(make_resource_path("icons/shopping_cart.png"))
+def shopping_cart() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/shopping-cart.png")))
 
 
 @cache
-def shuffle():
-    return QIcon(make_resource_path("icons/shuffle.png"))
+def shuffle() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/shuffle.png")))
 
 
 @cache
-def smartphone():
-    return QIcon(make_resource_path("icons/smartphone.png"))
+def smartphone() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/smartphone.png")))
 
 
 @cache
-def star():
-    return QIcon(make_resource_path("icons/star.png"))
+def star() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/star.png")))
 
 
 @cache
-def stop():
-    return QIcon(make_resource_path("icons/stop.png"))
+def stop() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/stop.png")))
 
 
 @cache
-def tablet():
-    return QIcon(make_resource_path("icons/tablet.png"))
+def tablet() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/tablet.png")))
 
 
 @cache
-def tag():
-    return QIcon(make_resource_path("icons/tag.png"))
+def tag() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/tag.png")))
 
 
 @cache
-def tasks():
-    return QIcon(make_resource_path("icons/tasks.png"))
+def tasks() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/tasks.png")))
 
 
 @cache
-def telephone():
-    return QIcon(make_resource_path("icons/telephone.png"))
+def telephone() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/telephone.png")))
 
 
 @cache
-def trash():
-    return QIcon(make_resource_path("icons/trash.png"))
+def trash() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/trash.png")))
 
 
 @cache
-def unlock():
-    return QIcon(make_resource_path("icons/unlock.png"))
+def unlock() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/unlock.png")))
 
 
 @cache
-def up_arrow():
-    return QIcon(make_resource_path("icons/up_arrow.png"))
+def up_arrow() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/up-arrow.png")))
 
 
 @cache
-def upload():
-    return QIcon(make_resource_path("icons/upload.png"))
+def upload() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/upload.png")))
 
 
 @cache
-def user():
-    return QIcon(make_resource_path("icons/user.png"))
+def user() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/user.png")))
 
 
 @cache
-def video_camera():
-    return QIcon(make_resource_path("icons/video_camera.png"))
+def video_camera() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/video-camera.png")))
 
 
 @cache
-def vision_stroked():
-    return QIcon(make_resource_path("icons/vision_stroked.png"))
+def vision_stroked() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/vision-stroked.png")))
 
 
 @cache
-def vision():
-    return QIcon(make_resource_path("icons/vision.png"))
+def vision() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/vision.png")))
 
 
 @cache
-def volume():
-    return QIcon(make_resource_path("icons/volume.png"))
+def volume() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/volume.png")))
 
 
 @cache
-def warning():
-    return QIcon(make_resource_path("icons/warning.png"))
+def warning() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/warning.png")))
 
 
 @cache
-def wifi():
-    return QIcon(make_resource_path("icons/wifi.png"))
+def wifi() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/wifi.png")))
 
 
 @cache
-def zoom_in():
-    return QIcon(make_resource_path("icons/zoom_in.png"))
+def zoom_in() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/zoom-in.png")))
 
 
 @cache
-def zoom_out():
-    return QIcon(make_resource_path("icons/zoom_out.png"))
+def zoom_out() -> QIcon:
+    return QIcon(_make_white(make_resource_path("icons/zoom-out.png")))
