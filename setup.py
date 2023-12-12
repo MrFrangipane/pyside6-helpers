@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 
 NAME = 'pyside6-helpers'
-VERSION = '0.0.1'
+VERSION = '0.0.0'
 DESCRIPTION = 'Bits of code used in most PySide based projects'
 AUTHOR = 'Frangitron'
 AUTHOR_EMAIL = 'contact@frangitron.com'
