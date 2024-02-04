@@ -27,9 +27,15 @@ QHeaderView::section:hover {
     color: rgb(232, 232, 232);
 }
 
+
 QPlainTextEdit:active,
 QPlainTextEdit:!active  {
-    background-color: rgb(104, 104, 104);
+    background-color: rgba(255, 255, 255, 15);
+}
+
+QPlainTextEdit[readOnly="true"],
+QPlainTextEdit[readOnly="true"]:focus {
+    border: None;
 }
 
 QToolTip {
@@ -37,6 +43,19 @@ QToolTip {
     border: 1px solid rgb(117, 117, 117);
     padding: 2px;
     background-color: rgb(66, 66, 66);
+}
+QStatusBar {
+    background-color: rgba(255, 255, 255, 15);
+}
+
+
+QStatusBar > QLabel {
+    color: rgb(185, 185, 185);
+    padding: 1;
+}
+
+QStatusBar::item {
+    border: none;
 }
 QTabWidget::pane {
     background-color: transparent;
@@ -299,7 +318,7 @@ QHeaderView::section:disabled {
     color: rgb(162, 162, 162);
 }
 QScrollArea, *[hasBackground="true"] {
-    background-color: rgb(66, 66, 66);
+    background-color: transparent;
     border-radius: 2px;
 }
 
@@ -579,6 +598,34 @@ QToolButton:hover {
 
 QToolButton:pressed {
     background-color: rgb(75, 165, 193);
+}
+QDockWidget {
+    background: rgb(66, 66, 66);
+}
+
+QDockWidget::title {
+    background: rgb(66, 66, 66);
+    border-bottom: 1px solid rgb(140, 140, 140);
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-top: 5px;
+    margin-right: 50px;
+}
+
+QDockWidget::close-button, QDockWidget::float-button {
+    color: rgb(232, 232, 232);
+    background: rgb(104, 104, 104);
+    margin: 6px;
+    border-radius: 2px;
+}
+
+QDockWidget::close-button:hover, QDockWidget::float-button:hover {
+    color: rgb(232, 232, 232);
+    background: rgb(117, 117, 117);
+}
+
+QDockWidget::close-button:pressed, QDockWidget::float-button:pressed {
+    background: rgb(75, 165, 193);
 }
 QLabel[isTitle="true"] {
     font-size: 11pt;
