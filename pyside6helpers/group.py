@@ -4,11 +4,12 @@ from PySide6.QtWidgets import QWidget, QGroupBox, QVBoxLayout, QHBoxLayout, QGri
 from PySide6.QtCore import Qt
 
 
-def make_group(title: str, widgets: List[QWidget], orientation=Qt.Vertical):
+def make_group(title: str, widgets: List[QWidget], orientation=Qt.Vertical, tooltip: str = None):
     """
     Creates a QGroupBox with given widgets, title and orientation
     """
     group = QGroupBox(title)
+    group.setToolTip(tooltip)
     layout = QVBoxLayout(group) if orientation == Qt.Vertical else QHBoxLayout(group)
 
     for widget in widgets:
