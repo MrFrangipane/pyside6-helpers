@@ -25,9 +25,10 @@ class LoggerWidget(QWidget):
         self.text_highlighter = TextHighlighter(self.text_edit.document())
 
         self.button_scroll_to_end = QPushButton()
+        self.button_scroll_to_end.setCheckable(True)
+        self.button_scroll_to_end.setChecked(True)
         self.button_scroll_to_end.setIcon(icons.down_arrow())
         self.button_scroll_to_end.setToolTip("Scroll to bottom")
-        self.button_scroll_to_end.clicked.connect(self._scroll_to_end)
 
         self.button_clear = QPushButton()
         self.button_clear.setIcon(icons.trash())
@@ -43,8 +44,9 @@ class LoggerWidget(QWidget):
 
     def append_to_log(self, text):
         self.text_edit.appendPlainText(text)
+        if self.button_scroll_to_end.isChecked():
+            scrollbar = self.text_edit.verticalScrollBar()
+            scrollbar.setValue(scrollbar.maximum())
+            scrollbar = self.text_edit.horizontalScrollBar()
+            scrollbar.setValue(scrollbar.minimum())
         QApplication.processEvents()
-
-    def _scroll_to_end(self):
-        self.text_edit.moveCursor(QTextCursor.End)
-        self.text_edit.ensureCursorVisible()

@@ -27,6 +27,13 @@ QHeaderView::section:hover {
     color: rgb(232, 232, 232);
 }
 
+QPushButton:checked {
+    background-color: rgb(75, 165, 193);
+}
+
+QPushButton:disabled:checked {
+    background-color: rgb(140, 140, 140);
+}
 
 QPlainTextEdit:active,
 QPlainTextEdit:!active  {
