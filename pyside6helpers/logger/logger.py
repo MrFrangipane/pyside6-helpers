@@ -3,6 +3,7 @@ from io import TextIOWrapper
 from PySide6.QtCore import QObject, Signal
 
 
+# fixme: doesn't work with pythonw en windows (not tested elsewhere)
 class Logger(QObject):
     written = Signal(str)
 
