@@ -1,5 +1,16 @@
+import functools
+
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import Qt
+
+
+def hourglass_wrapper(func, parent=None):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        with Hourglass(parent):
+            return func(*args, **kwargs)
+
+    return wrapper
 
 
 class Hourglass:
