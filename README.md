@@ -6,6 +6,12 @@ This project is alpha: expect breaking changes
 
 # Icons
 
-Icons made by https://www.freepik.com (https://www.flaticon.com)
+Icons made by [Freepik](https://www.freepik.com/) and found on [Flat Icon](https://www.flaticon.com)
 
 See [this page](icons.md) for usage and reference
+
+## Disclaimer
+
+Please add this sentence to your readme/about
+
+> This project uses [PySide6 helpers](https://github.com/MrFrangipane/pyside6-helpers) which icons were made by [Freepik](https://www.freepik.com/) and found on [Flat Icon](https://www.flaticon.com)
