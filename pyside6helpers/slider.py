@@ -22,6 +22,7 @@ class Slider(QWidget):  # FIXME autocompletion ?
         self.slider.setValue(value)
 
         self.label = QLabel()
+        self.label.setFixedWidth(40)  # FIXME compute width from min/max ?
 
         self.slider.valueChanged.connect(self._update_label)
         if on_value_changed is not None:
