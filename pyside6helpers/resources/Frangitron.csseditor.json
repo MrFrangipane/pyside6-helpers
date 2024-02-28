@@ -703,6 +703,11 @@
       "    background: {{ primary }};",
       "}"
     ],
+    "QGraphics": [
+      "QGraphicsView {",
+      "    background: {{ transparentWhite }};",
+      "}"
+    ],
     "Properties": [
       "QLabel[isTitle=\"true\"] {",
       "    font-size: 11pt;",

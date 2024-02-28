@@ -663,6 +663,9 @@ QDockWidget::close-button:hover, QDockWidget::float-button:hover {
 QDockWidget::close-button:pressed, QDockWidget::float-button:pressed {
     background: rgb(75, 165, 193);
 }
+QGraphicsView {
+    background: rgba(255, 255, 255, 15);
+}
 QLabel[isTitle="true"] {
     font-size: 11pt;
 }
