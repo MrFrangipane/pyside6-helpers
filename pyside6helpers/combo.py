@@ -14,7 +14,7 @@ def update(combo: QComboBox, items: List[str]):
     try:
         combo.setCurrentIndex(items.index(current_text))
     except ValueError:
-        pass
+        combo.setCurrentIndex(-1)
 
     combo.blockSignals(False)
 

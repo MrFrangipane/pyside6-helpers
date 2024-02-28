@@ -22,7 +22,8 @@ QPlainTextEdit:focus {
 
 QLineEdit:hover,
 QPushButton:hover,
-QHeaderView::section:hover {
+QHeaderView::section:hover, 
+QSpinBox:hover {
     background-color: rgb(117, 117, 117);
     color: rgb(232, 232, 232);
 }
@@ -395,7 +396,7 @@ QSlider::handle:horizontal {
 }
 
 QSlider::groove:horizontal {
-    height: 2px;
+    height: 7px;
 }
 QProgressBar {
     border: none;

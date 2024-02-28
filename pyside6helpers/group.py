@@ -1,10 +1,10 @@
 from typing import List
 
-from PySide6.QtWidgets import QWidget, QGroupBox, QVBoxLayout, QHBoxLayout, QGridLayout
 from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QWidget, QGroupBox, QVBoxLayout, QHBoxLayout, QGridLayout, QSizePolicy
 
 
-def make_group(title: str, widgets: List[QWidget], orientation=Qt.Vertical, tooltip: str = None):
+def make_group(title: str, widgets: List[QWidget], orientation=Qt.Vertical, tooltip: str = None, fixed_width: int = None, fixed_height: int = None):
     """
     Creates a QGroupBox with given widgets, title and orientation
     """
@@ -14,6 +14,12 @@ def make_group(title: str, widgets: List[QWidget], orientation=Qt.Vertical, tool
 
     for widget in widgets:
         layout.addWidget(widget)
+
+    if fixed_width is not None:
+        group.setFixedWidth(fixed_width)
+
+    if fixed_height is not None:
+        group.setFixedHeight(fixed_height)
 
     return group
 
