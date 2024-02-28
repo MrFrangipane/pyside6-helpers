@@ -214,6 +214,10 @@ QPushButton[primary=true] {
     background-color: rgb(75, 165, 193);
 }
 
+QPushButton:pressed:hover {
+    background-color: rgb(106, 198, 237);
+}
+
 QPushButton[secondary=true] {
     background-color: transparent;
     border: 2px solid rgb(104, 104, 104);
@@ -370,6 +374,29 @@ QScrollBar::handle:hover {
 QScrollBar::handle:disabled {
     background-color: rgb(185, 185, 185);
 }
+QSlider::groove {
+    background: rgba(255, 255, 255, 15);
+    position: absolute;
+    left: 4px;
+    right: 4px;
+}
+
+QSlider::handle {
+    background: rgb(75, 165, 193);
+    border-radius: 2px;
+}
+
+QSlider::handle:hover {
+    background: rgb(106, 198, 237);
+}
+
+QSlider::handle:horizontal {
+    margin: -8px -4px; /* expand outside the groove */
+}
+
+QSlider::groove:horizontal {
+    height: 2px;
+}
 QProgressBar {
     border: none;
     background-color: rgb(104, 104, 104);
@@ -395,7 +422,7 @@ QProgressBar::chunk {
 QLabel {
     background-color: transparent;
     color: rgb(185, 185, 185);
-    padding: 7px;
+    padding: 2px;
 }
 
 QLabel:disabled {
@@ -467,6 +494,7 @@ QSpinBox {
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
     border: 2px solid rgb(104, 104, 104);
+    height: 20;
 }
 
 QSpinBox:disabled {
@@ -474,10 +502,9 @@ QSpinBox:disabled {
 }
 
 QSpinBox::up-button, QSpinBox::down-button {
-
     background-color: rgb(140, 140, 140);
     width: 12px;
-    height: 9px;
+    height: 8px;
     margin: 1px;
 }
 
@@ -505,6 +532,7 @@ QComboBox {
     padding: 7px;
     combobox-popup: 0;
     border-bottom-right-radius: 6px;
+    height: 10px;
 }
 
 QComboBox::drop-down {
