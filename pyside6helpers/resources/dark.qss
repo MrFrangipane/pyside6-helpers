@@ -570,6 +570,13 @@ QMenu::item:selected {
     background-color: rgb(75, 165, 193);
 }
 
+
+QMenu::item:disabled {
+    background-color: rgba(255, 255, 255, 15);
+    color: rgb(140, 140, 140);
+}
+
+
 QMenu::separator {
     height: 2px;
     background: rgb(104, 104, 104);
