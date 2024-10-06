@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyside6-helpers"
+version = "0.0.1"
+description = "Bits of code used in most PySide based projects"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [
+  {name = "Mr Frangipane", email = "contact@frangipane.me" }
+]
+maintainers = [
+  {name = "Mr Frangipane", email = "contact@frangipane.me" }
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.optional-dependencies]
+dev = ["check-manifest"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
