@@ -5,7 +5,7 @@ import os.path
 import logging
 from glob import glob
 
-from pyside6helpers.resources import make_resource_path
+from pyside6helpers import resources
 
 
 logging.basicConfig(level=logging.INFO)
@@ -64,7 +64,7 @@ module = _MODULE
 doc = _DOC
 column = 0
 doc_line = ""
-icons = glob(make_resource_path("icons/*.png"))
+icons = glob(resources.make_path("icons/*.png"))
 for index, icon in enumerate(icons):
     name_file = os.path.basename(icon)
     name_file = os.path.splitext(name_file)[0]

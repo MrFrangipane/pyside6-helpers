@@ -2,13 +2,13 @@ import os
 import json
 
 from .project import Project
-from pyside6helpers.resources import make_resource_path
+from pyside6helpers.resources import make_path
 
 
 class ProjectPersistence:
     def __init__(self, project_name):
         self.project_name = project_name
-        self._project_filename = make_resource_path(f"{project_name}.csseditor.json")
+        self._project_filename = make_path(f"{project_name}.csseditor.json")
 
     def load(self) -> Project:
         project = Project(self.project_name)
