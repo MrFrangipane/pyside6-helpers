@@ -10,9 +10,7 @@ def _make_resource_filepath(filename):
     return os.path.join(os.path.dirname(_HERE), "resources", filename)
 
 
-def load_onto(q_widget: QWidget, filepath=None):
-    if filepath is None:
-        filepath = _make_resource_filepath("dark.qss")
-
+def load_onto(q_widget: QWidget):
+    filepath = _make_resource_filepath("dark.qss")
     with open(filepath, "r") as stylesheet_file:
         q_widget.setStyleSheet(stylesheet_file.read())
