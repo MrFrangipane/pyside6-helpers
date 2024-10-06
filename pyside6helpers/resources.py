@@ -1,18 +1,21 @@
 import os.path
 
+from pyside6helpers.python_extensions.singleton_metaclass import SingletonMetaclass
+
 
 _here = os.path.abspath(os.path.dirname(__file__))
-_resource_path = None
+
+
+class _Resources(metaclass=SingletonMetaclass):
+    root = None
 
 
 def make_path(resource_name):
-    global _resource_path
-    if _resource_path is not None:
+    if _Resources().root is None:
         return os.path.join(_here, "resources", resource_name)
     else:
-        return os.path.join(_resource_path, resource_name)
+        return os.path.join(_Resources().root, resource_name)
 
 
 def set_path(resource_path):
-    global _resource_path
-    _resource_path = str(resource_path)
+    _Resources().root = resource_path
