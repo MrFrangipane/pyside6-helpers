@@ -4,10 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyside6-helpers"
-version = "0.0.1"
 description = "Bits of code used in most PySide based projects"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 license = {file = "LICENSE"}
 authors = [
   {name = "Mr Frangipane", email = "contact@frangipane.me" }
@@ -19,9 +18,11 @@ classifiers = [
   "Development Status :: 3 - Alpha",
   "Programming Language :: Python :: 3 :: Only",
 ]
+keywords = ["python", "pyside", "frangitron", "gui"]
+dynamic = ["version"]
 
-[project.optional-dependencies]
-dev = ["check-manifest"]
+[tool.setuptools]
+include-package-data = true
 
 [tool.hatch.metadata]
 allow-direct-references = true
