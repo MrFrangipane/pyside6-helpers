@@ -24,7 +24,7 @@ def make_group(title: str, widgets: List[QWidget], orientation=Qt.Vertical, tool
     return group
 
 
-def make_group_grid(title: str, widgets: List[List[QWidget]]):
+def make_group_grid(title: str, widgets: List[List[QWidget]], stretch_last_column=False):
     """
     Creates a QGroupBox with given widgets and title
     Layout is QGridLayout
@@ -35,5 +35,8 @@ def make_group_grid(title: str, widgets: List[List[QWidget]]):
     for row, widget_row in enumerate(widgets):
         for column, widget in enumerate(widget_row):
             layout.addWidget(widget, row, column)
+
+    if stretch_last_column:
+        layout.setColumnStretch(len(widgets[0]) - 1, 1)
 
     return group
