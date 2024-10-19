@@ -9,10 +9,17 @@ class IntegerDelegate(QStyledItemDelegate):
         return editor
 
     def setEditorData(self, editor: QLineEdit, index):
-        editor.setText(str(index.data(Qt.DisplayRole)))
+        value = index.data(Qt.DisplayRole)
+        if value is not None:
+            editor.setText(str(value))
 
     def setModelData(self, editor: QLineEdit, model, index):
-        model.setData(index, int(editor.text().strip()))
+        try:
+            value = int(editor.text().strip())
+        except ValueError:
+            value = None
+
+        model.setData(index, value)
 
     def displayText(self, value, locale):
         return str(value)
