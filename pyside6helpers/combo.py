@@ -2,8 +2,9 @@ from typing import List
 from PySide6.QtWidgets import QComboBox
 
 
-def update(combo: QComboBox, items: List[str], current_text=""):
-    current_text = combo.currentText() if not current_text else current_text
+def update(combo: QComboBox, items: List[str], current_text="", reset: bool = False):
+    if not reset:
+        current_text = combo.currentText() if not current_text else current_text
     combo.blockSignals(True)
     combo.clear()
 
