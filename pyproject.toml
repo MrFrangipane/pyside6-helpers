@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "pyside6-helpers"
 description = "Bits of code used in most PySide based projects"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 license = {file = "LICENSE"}
 authors = [
   {name = "Mr Frangipane", email = "contact@frangipane.me" }
