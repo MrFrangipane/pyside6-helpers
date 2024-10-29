@@ -235,6 +235,11 @@ def levels() -> QIcon:
 
 
 @cache
+def lightbulb() -> QIcon:
+    return QIcon(_make_white(make_path("icons/lightbulb.png")))
+
+
+@cache
 def like() -> QIcon:
     return QIcon(_make_white(make_path("icons/like.png")))
 

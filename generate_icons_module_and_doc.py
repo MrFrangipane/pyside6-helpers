@@ -17,7 +17,7 @@ _MODULE = """from functools import cache
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon, QPixmap
-from pyside6helpers.resources import make_resource_path
+from pyside6helpers.resources import make_path
 
 
 def _make_white(filepath):
@@ -32,7 +32,7 @@ _FUNCTION_TEMPLATE = """
 
 @cache
 def {name_function}() -> QIcon:
-    return QIcon(_make_white(make_resource_path("icons/{name_file}.png")))
+    return QIcon(_make_white(make_path("icons/{name_file}.png")))
 """
 _DOC = """# Icons
 
