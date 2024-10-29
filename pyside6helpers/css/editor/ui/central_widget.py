@@ -1,5 +1,5 @@
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLineEdit
+from PySide6.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLineEdit, QTabWidget
 
 from ..service.project import Project
 from .tabbed_template_editor import TabbedTemplateEditor
@@ -36,13 +36,17 @@ class CentralWidget(QWidget):
         self._line_save_to = QLineEdit(self._project.save_to)
         self._line_save_to.textChanged.connect(self.saveToChanged)
 
+
+        self._tabs = QTabWidget()
+        self._tabs.addTab(self._template_tabs, "Template")
+        self._tabs.addTab(self._variables, "Variables")
+
         layout = QGridLayout(self)
-        layout.addWidget(self._template_tabs, 0, 0, 3, 1)
-        layout.addWidget(self._variables, 0, 1, 1, 2)
-        layout.addWidget(self._new_theme_button, 1, 1)
-        layout.addWidget(self._delete_theme_button, 1, 2)
-        layout.addWidget(self._export_all_themes, 2, 1, 1, 2)
-        layout.addWidget(self._line_save_to, 3, 1, 1, 2)
+        layout.addWidget(self._tabs, 0, 0, 1, 2)
+        # layout.addWidget(self._new_theme_button, 1, 1)
+        # layout.addWidget(self._delete_theme_button, 1, 2)
+        layout.addWidget(self._export_all_themes, 1, 0)
+        layout.addWidget(self._line_save_to, 1, 1)
 
     @property
     def template(self):

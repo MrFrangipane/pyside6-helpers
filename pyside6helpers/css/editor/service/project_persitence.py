@@ -42,8 +42,8 @@ class ProjectPersistence:
         return project
 
     def _load_3(self, project_raw, project):
-        project.template = {section_name: "\n".join(lines) for section_name, lines in project_raw['template'].items()}
-        project.variables = project_raw['variables']
+        project.template = dict(sorted({section_name: "\n".join(lines) for section_name, lines in project_raw['template'].items()}.items()))
+        project.variables = dict(sorted(project_raw['variables'].items()))
         project.themes = project_raw['themes']
         project.save_to = project_raw['save_to']
 

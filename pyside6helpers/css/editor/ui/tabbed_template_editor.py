@@ -10,7 +10,7 @@ from PySide6.QtWidgets import QTabWidget, QPlainTextEdit
 from .template_highlighter import TemplateHighlighter
 
 
-RE_TABS = re.compile(r'^\/\*([^\/\*]+)\*\/$', re.MULTILINE)
+RE_TABS = re.compile(r'^\/\*#([^\/\*#]+)\*\/$', re.MULTILINE)
 DEFAULT_TAB = "CSS"
 
 
@@ -74,7 +74,7 @@ class TabbedTemplateEditor(QTabWidget):
             if not text:
                 continue
 
-            texts.append('/* {} */'.format(name))
+            texts.append('/*# {} */'.format(name))
             texts.append(text)
             texts.append("")
 

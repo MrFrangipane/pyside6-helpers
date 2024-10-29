@@ -20,7 +20,6 @@ COLOR_VARIANTS = [
 
 def _make_main_window(project: Project, central_widget) -> QMainWindow:
     main_window = QMainWindow()
-    main_window.setWindowFlags(Qt.Tool)
     main_window.setCentralWidget(central_widget)
     main_window.setWindowTitle(f"CSS Editor 2 ({project.name})")
     main_window.resize(800, 600)
