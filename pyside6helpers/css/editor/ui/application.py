@@ -2,9 +2,10 @@ import os.path
 
 import jinja2
 from PySide6.QtCore import Qt, QObject, QTimer
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication
 
 from pyside6helpers.error_reporting import error_reported
+from pyside6helpers.main_window import MainWindow
 
 from .. import api
 from ..service.project import Project
@@ -18,11 +19,12 @@ COLOR_VARIANTS = [
 ]
 
 
-def _make_main_window(project: Project, central_widget) -> QMainWindow:
-    main_window = QMainWindow()
+def _make_main_window(project: Project, central_widget) -> MainWindow:
+    main_window = MainWindow(
+        settings_tuple=("Frangitron", "CSS Editor 2")
+    )
     main_window.setCentralWidget(central_widget)
     main_window.setWindowTitle(f"CSS Editor 2 ({project.name})")
-    main_window.resize(800, 600)
 
     return main_window
 

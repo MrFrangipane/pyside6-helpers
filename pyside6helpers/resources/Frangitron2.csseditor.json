@@ -1,0 +1,143 @@
+{
+  "template": {
+    "CSS": [
+      "* {",
+      "  color: {{ white }};",
+      "  background-color: {{ background }};",
+      "  outline: none;",
+      "}",
+      "",
+      "QLineEdit:focus,",
+      "QCombobox:focus,",
+      "QCheckBox:focus,",
+      "QPushButton:focus {",
+      "  background-color: {{ backgroundFocus }};",
+      "}",
+      "",
+      "*:disabled {",
+      "  color: {{ whiteDisabled }};",
+      "}",
+      "",
+      "*:pressed {",
+      "  background-color: {{ primary }};",
+      "}"
+    ],
+    "Toolbar": [
+      "QToolBar {",
+      "  background-color: {{ backgroundHi }};",
+      "}",
+      "",
+      "",
+      "QToolBar::separator {",
+      "    background-color: {{ transparentWhite }};",
+      "    margin: 2px;",
+      "}",
+      "",
+      "QToolButton {",
+      "    background-color: transparent;",
+      "}",
+      "",
+      "QToolButton:hover {",
+      "    background-color: {{ backgroundHover }};",
+      "}",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "/*",
+      "QToolButton:pressed {",
+      "    background-color: rgb(75, 165, 193);",
+      "}",
+      "",
+      "QToolButton:checked {",
+      "    background-color: rgb(75, 165, 193);",
+      "}",
+      "",
+      "QToolButton:checked:hover {",
+      "    background-color: rgb(106, 198, 237);",
+      "}",
+      "",
+      "QToolBar::handle {",
+      "    background-color: rgba(255, 255, 255, 15);",
+      "}",
+      "",
+      "QToolBar::handle:horizontal {",
+      "    margin-right: 1px;",
+      "}",
+      "",
+      "QToolBar::handle:vertical {",
+      "    margin-bottom: 1px;",
+      "}",
+      "*/"
+    ]
+  },
+  "variables": {
+    "background": [
+      71,
+      71,
+      71
+    ],
+    "backgroundFocus": [
+      94,
+      94,
+      94
+    ],
+    "backgroundHi": [
+      86,
+      86,
+      86
+    ],
+    "backgroundHover": [
+      104,
+      104,
+      104
+    ],
+    "comboBoxItemHeight": "25px",
+    "fontSize": "9pt",
+    "hover": [
+      117,
+      117,
+      117
+    ],
+    "inactive": [
+      135,
+      135,
+      135
+    ],
+    "padding": "7px",
+    "primary": [
+      75,
+      165,
+      193
+    ],
+    "primaryHi": [
+      106,
+      198,
+      237
+    ],
+    "radius": "2px",
+    "radius2": "6px",
+    "scrollbar": "13px",
+    "toolbar": "20px",
+    "transparentWhite": "rgba(255, 255, 255, 30)",
+    "white": [
+      232,
+      232,
+      232
+    ],
+    "backgroundDisabled": [
+      68,
+      68,
+      68
+    ],
+    "whiteDisabled": [
+      160,
+      160,
+      160
+    ]
+  },
+  "themes": {},
+  "version": 3,
+  "save_to": "E:\\PROJECTS_2023\\pyside6-helpers\\pyside6helpers\\resources\\dark.qss"
+}

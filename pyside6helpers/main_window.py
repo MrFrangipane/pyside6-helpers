@@ -30,12 +30,14 @@ class MainWindow(QMainWindow):
 
     def save_geometry(self):
         if self._settings_tuple:
+            # print("Save geometry for", self.windowTitle(), "to", self._settings_tuple)
             settings = QSettings(*self._settings_tuple)
             settings.setValue('geometry', self.saveGeometry())
             settings.setValue('state', self.saveState())
 
     def load_geometry(self):
         if self._settings_tuple:
+            # print("Load geometry for", self.windowTitle(), "from", self._settings_tuple)
             settings = QSettings(*self._settings_tuple)
             self.restoreGeometry(settings.value('geometry'))
             self.restoreState(settings.value('state'))

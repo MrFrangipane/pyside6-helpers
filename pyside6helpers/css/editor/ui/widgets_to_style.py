@@ -5,23 +5,23 @@ a pyside6 qmainwindow with all the common widgets: toolbar with icons, label, pu
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction, QPixmap
 from PySide6.QtWidgets import (
-    QMainWindow, QLabel, QPushButton, QToolBar, QComboBox,
+    QLabel, QPushButton, QToolBar, QComboBox,
     QCheckBox, QGroupBox, QSlider, QVBoxLayout, QWidget, QTableWidget,
     QTableWidgetItem, QLineEdit, QProgressBar, QMenu, QStatusBar,
     QTabWidget, QFrame, QScrollArea, QSpinBox, QHBoxLayout
 )
 
 from pyside6helpers import icons
+from pyside6helpers.main_window import MainWindow as _MainWindow
 
 
-class MainWindow(QMainWindow):
+class MainWindow(_MainWindow):
     def __init__(self):
-        super().__init__()
+        super().__init__(settings_tuple=("Frangitron", "CSS Editor 2 - Widgets to style"))
         self.initUI()
 
     def initUI(self):
         self.setWindowTitle("PySide6 Widget Example")
-        self.setGeometry(100, 100, 1000, 800)
 
         # Central widget
         central_widget = QWidget()
@@ -79,6 +79,7 @@ class MainWindow(QMainWindow):
 
     def create_label_button_group(self):
         group_box = QGroupBox("Labels and Buttons")
+        group_box.setCheckable(True)
         layout = QVBoxLayout()
         group_box.setLayout(layout)
 
@@ -96,6 +97,7 @@ class MainWindow(QMainWindow):
 
     def create_combo_check_group(self):
         group_box = QGroupBox("ComboBox and CheckBox")
+        group_box.setCheckable(True)
         layout = QVBoxLayout()
         group_box.setLayout(layout)
 
@@ -110,6 +112,7 @@ class MainWindow(QMainWindow):
 
     def create_slider_group(self):
         group_box = QGroupBox("Slider")
+        group_box.setCheckable(True)
         layout = QVBoxLayout()
         group_box.setLayout(layout)
 
@@ -120,6 +123,7 @@ class MainWindow(QMainWindow):
 
     def create_table_group(self):
         group_box = QGroupBox("Table")
+        group_box.setCheckable(True)
         layout = QVBoxLayout()
         group_box.setLayout(layout)
 
@@ -134,6 +138,7 @@ class MainWindow(QMainWindow):
 
     def create_additional_widgets_group(self):
         group_box = QGroupBox("Additional Widgets")
+        group_box.setCheckable(True)
         layout = QVBoxLayout()
         group_box.setLayout(layout)
 
