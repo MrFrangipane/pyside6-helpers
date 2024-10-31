@@ -22,7 +22,8 @@ class Hourglass:
     ````
     """
 
-    def __init__(self, parent=None):
+    def __init__(self, disable=True, parent=None):
+        self._disable = disable
         if parent is None:
             parent = QApplication.topLevelWidgets()[0]  # TODO : are we sure of this ?
         self._parent = parent
@@ -30,12 +31,14 @@ class Hourglass:
 
     def __enter__(self):
         QApplication.setOverrideCursor(Qt.WaitCursor)
-        self._parent.setEnabled(False)
+        if self._disable:
+            self._parent.setEnabled(False)
         QApplication.processEvents()
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         try:
-            self._parent.setEnabled(True)
+            if self._disable:
+                self._parent.setEnabled(True)
             self._widget.setFocus()
         except AttributeError:
             pass
