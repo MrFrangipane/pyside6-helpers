@@ -15,7 +15,7 @@ class MainWindow(QMainWindow):
             logo_label.setPixmap(logo_pixmap)
             self.statusBar().addPermanentWidget(logo_label)
 
-        self._settings_tuple = settings_tuple
+        self._settings_tuple = settings_tuple  # FIXME explicit organization/application
 
         self.load_geometry()
 
