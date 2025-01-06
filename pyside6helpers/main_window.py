@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QLabel, QMainWindow
 
 
 class MainWindow(QMainWindow):
+    firstTimeShown = Signal()
     shown = Signal()
 
     def __init__(self, logo_filepath: str = "", settings_tuple: tuple[str, str] = tuple()):
@@ -17,6 +18,8 @@ class MainWindow(QMainWindow):
 
         self._settings_tuple = settings_tuple  # FIXME explicit organization/application
 
+        self._fist_time_shown = True
+
         self.load_geometry()
 
     def closeEvent(self, event):
@@ -26,6 +29,11 @@ class MainWindow(QMainWindow):
 
     def showEvent(self, event):
         self.shown.emit()
+
+        if self._fist_time_shown:
+            self._fist_time_shown = False
+            self.firstTimeShown.emit()
+
         event.accept()
 
     def save_geometry(self):
