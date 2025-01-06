@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyside6-helpers"
+name = "pyside6helpers"
 description = "Bits of code used in most PySide based projects"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -19,10 +19,13 @@ classifiers = [
   "Programming Language :: Python :: 3 :: Only",
 ]
 keywords = ["python", "pyside", "frangitron", "gui"]
-dynamic = ["version"]
+dynamic = ["version", "dependencies"]
 
 [tool.setuptools]
 include-package-data = true
 
 [tool.hatch.metadata]
 allow-direct-references = true
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
