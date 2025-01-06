@@ -19,7 +19,8 @@ classifiers = [
   "Programming Language :: Python :: 3 :: Only",
 ]
 keywords = ["python", "pyside", "frangitron", "gui"]
-dynamic = ["version", "dependencies"]
+dynamic = ["dependencies"]
+version = "0.0.0"
 
 [tool.setuptools]
 include-package-data = true
