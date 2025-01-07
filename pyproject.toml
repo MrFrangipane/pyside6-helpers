@@ -5,6 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pyside6helpers"
 description = "Bits of code used in most PySide based projects"
+version = "0.1.0"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {file = "LICENSE"}
@@ -20,7 +21,6 @@ classifiers = [
 ]
 keywords = ["python", "pyside", "frangitron", "gui"]
 dynamic = ["dependencies"]
-version = "0.0.0"
 
 [tool.setuptools]
 include-package-data = true

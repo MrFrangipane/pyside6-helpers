@@ -9,6 +9,7 @@ class Logger(QObject):
 
     def __init__(self, stream: TextIOWrapper, parent=None):
         super().__init__(parent)
+
         self.name = stream.name.strip('<>')
         self._stream = stream
         self._buffer = ""

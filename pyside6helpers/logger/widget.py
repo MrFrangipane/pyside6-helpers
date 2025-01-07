@@ -6,18 +6,26 @@ from PySide6.QtWidgets import QWidget, QPlainTextEdit, QGridLayout, QPushButton,
 from pyside6helpers import icons
 
 from pyside6helpers.logger.logger import Logger
+from pyside6helpers.logger.string_io_capture import StringIOCapture
 from pyside6helpers.logger.text_highlighter import TextHighlighter
 
 
 class LoggerWidget(QWidget):
 
-    def __init__(self, parent=None):
+    def __init__(self, string_io_capture: StringIOCapture=None, parent=None):
         super().__init__(parent)
+        self._string_io_capture = string_io_capture
+        self._logger_stdout = None
+        self._logger_stderr = None
 
-        self._logger_stdout = Logger(sys.stdout)
-        self._logger_stdout.written.connect(self.append_to_log)
-        self._logger_stderr = Logger(sys.stderr)
-        self._logger_stderr.written.connect(self.append_to_log)
+        if string_io_capture is not None:
+            self._string_io_capture.written.connect(self.append_to_log)
+
+        else:
+            self._logger_stdout = Logger(sys.stdout)
+            self._logger_stdout.written.connect(self.append_to_log)
+            self._logger_stderr = Logger(sys.stderr)
+            self._logger_stderr.written.connect(self.append_to_log)
 
         self.text_edit = QPlainTextEdit()
         self.text_edit.setReadOnly(True)
@@ -42,6 +50,9 @@ class LoggerWidget(QWidget):
         layout.addWidget(self.button_clear, 1, 1)
         layout.addWidget(QWidget(), 2, 1)
         layout.setRowStretch(2, 100)
+
+        if string_io_capture is not None:
+            self.append_to_log(self._string_io_capture.getvalue().strip())
 
     def append_to_log(self, text):
         self.text_edit.appendPlainText(text)
