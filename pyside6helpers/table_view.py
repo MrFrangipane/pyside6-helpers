@@ -1,4 +1,4 @@
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QKeySequence
 from PySide6.QtWidgets import QTableView
 
@@ -10,6 +10,8 @@ def resize_columns_to_content_with_padding(table_view: QTableView, padding: int)
 
 
 class TableView(QTableView):
+    beginPaste = Signal()
+    endPaste = Signal()
     """
     QTableView with deletion key functionality
     """
@@ -61,8 +63,10 @@ class TableView(QTableView):
         start_row = selected_indexes[0].row()
         start_col = selected_indexes[0].column()
 
+        self.beginPaste.emit()
         for (row, column), value in self._internal_clipboard.items():
             if not value:
                 continue
 
             self.model().setData(self.model().index(start_row + row, start_col + column), value, Qt.EditRole)
+        self.endPaste.emit()
