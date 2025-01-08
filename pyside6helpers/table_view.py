@@ -47,8 +47,6 @@ class TableView(QTableView):
         for index in selected_indexes:
             self._internal_clipboard[(index.row() - start_row, index.column() - start_col)] = index.data(Qt.DisplayRole) or ""
 
-        print(self._internal_clipboard)
-
     def _paste_from_clipboard(self):
         if not self._internal_clipboard:
             return
