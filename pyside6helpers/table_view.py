@@ -64,9 +64,13 @@ class TableView(QTableView):
         start_col = selected_indexes[0].column()
 
         self.beginPaste.emit()
-        for (row, column), value in self._internal_clipboard.items():
-            if not value:
-                continue
+        if len(self._internal_clipboard) == 1:
+            for index in selected_indexes:
+                self.model().setData(index, self._internal_clipboard[(0, 0)], Qt.EditRole)
+        else:
+            for (row, column), value in self._internal_clipboard.items():
+                if not value:
+                    continue
+                self.model().setData(self.model().index(start_row + row, start_col + column), value, Qt.EditRole)
 
-            self.model().setData(self.model().index(start_row + row, start_col + column), value, Qt.EditRole)
         self.endPaste.emit()
