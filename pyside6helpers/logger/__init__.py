@@ -5,7 +5,7 @@ from pyside6helpers.logger.widget import LoggerWidget
 from pyside6helpers.logger.string_io_capture import StringIOCapture
 
 
-def dock_logger_to_main_window(main_window: QMainWindow, string_io_capture: StringIOCapture=None):
+def dock_logger_to_main_window(main_window: QMainWindow, string_io_capture: StringIOCapture=None) -> QDockWidget:
     logger_widget = LoggerWidget(string_io_capture=string_io_capture)
 
     logger_dock_widget = QDockWidget()
@@ -15,3 +15,5 @@ def dock_logger_to_main_window(main_window: QMainWindow, string_io_capture: Stri
     logger_dock_widget.setWidget(logger_widget)
 
     main_window.addDockWidget(Qt.DockWidgetArea.BottomDockWidgetArea, logger_dock_widget)
+
+    return logger_dock_widget
