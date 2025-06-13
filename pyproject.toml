@@ -1,5 +1,10 @@
 [build-system]
-requires = ["setuptools"]
+requires = [
+  "setuptools",
+  "PySide6",
+  "jinja2",
+  "dateparser"
+]
 build-backend = "setuptools.build_meta"
 
 [project]
