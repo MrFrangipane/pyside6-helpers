@@ -449,6 +449,7 @@ QSlider::groove:horizontal {
 QSlider::groove:vertical {
     width: 7px;
 }
+QDoubleSpinBox, 
 QSpinBox {
     height: 22px;
     background-color: rgb(104, 104, 104);
@@ -459,10 +460,12 @@ QSpinBox {
     height: 20;
 }
 
+QDoubleSpinBox:disabled, 
 QSpinBox:disabled {
     color: rgb(135, 135, 135); 
 }
 
+QDoubleSpinBox::up-button, QDoubleSpinBox::down-button,
 QSpinBox::up-button, QSpinBox::down-button {
     background-color: rgb(140, 140, 140);
     width: 12px;
@@ -470,20 +473,24 @@ QSpinBox::up-button, QSpinBox::down-button {
     margin: 1px;
 }
 
+QDoubleSpinBox::up-button, 
 QSpinBox::up-button {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
 
+QDoubleSpinBox::down-button, 
 QSpinBox::down-button {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
 }
 
+QDoubleSpinBox::up-button:hover, QDoubleSpinBox::down-button:hover,
 QSpinBox::up-button:hover, QSpinBox::down-button:hover {
     background-color: rgb(117, 117, 117);
 }
 
+QDoubleSpinBox::up-button:pressed, QDoubleSpinBox::down-button:pressed,
 QSpinBox::up-button:pressed, QSpinBox::down-button:pressed {
     background-color: rgb(75, 165, 193);
 }

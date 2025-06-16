@@ -1,14 +1,14 @@
-from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QSpinBox
+from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QSpinBox, QDoubleSpinBox
 
 
-class SpinBox(QWidget):  # FIXME autocompletion ?
-    """
-    Thin wrapper for a QSpinBox that shows its name
-    """
+class _BaseSpinBox(QWidget):  # FIXME autocompletion ?
+
+    _spinBoxClass = None
+
     def __init__(self, name="", minimum=0, maximum=0, value=0, single_step=1, on_value_changed=None, parent=None):
         QWidget.__init__(self, parent)
 
-        self.spinbox = QSpinBox()
+        self.spinbox = self._spinBoxClass()
         layout = QHBoxLayout(self)
 
         self.spinbox.setSingleStep(single_step)
@@ -28,3 +28,18 @@ class SpinBox(QWidget):  # FIXME autocompletion ?
 
     def __getattr__(self, item):
         return getattr(self.spinbox, item)
+
+
+
+class SpinBox(_BaseSpinBox):
+    """
+    Thin wrapper for a QSpinBox that shows its name
+    """
+    _spinBoxClass = QSpinBox
+
+
+class DoubleSpinBox(_BaseSpinBox):
+    """
+    Thin wrapper for a QDoubleSpinBox that shows its name
+    """
+    _spinBoxClass = QDoubleSpinBox
