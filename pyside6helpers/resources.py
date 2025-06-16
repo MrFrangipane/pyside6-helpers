@@ -1,6 +1,6 @@
 import os.path
 
-from pyside6helpers.python_extensions.singleton_metaclass import SingletonMetaclass
+from pythonhelpers.singleton_metaclass import SingletonMetaclass
 
 
 class _Resources(metaclass=SingletonMetaclass):
