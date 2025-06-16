@@ -1,7 +1,7 @@
 from PySide6.QtCore import QObject, Signal, Slot, QThread
 from PySide6.QtWidgets import QApplication, QLabel, QLineEdit, QVBoxLayout, QWidget, QPushButton
 
-from pyside6helpers.reactive import Observer, Reactive
+from pythonhelpers.reactive import Observer, Reactive
 
 
 class Worker(QObject):
