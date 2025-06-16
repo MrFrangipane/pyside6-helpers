@@ -20,7 +20,7 @@ class Worker(QObject):
                 if self.should_stop:
                     break
 
-                QThread.currentThread().msleep(500)
+                QThread.currentThread().sleep(2)
                 self.progress_updated.emit(i * 10)
 
             if not self.should_stop:
@@ -107,6 +107,15 @@ class EmitterWidget(QWidget):
 if __name__ == '__main__':
     app = QApplication([])
     app.setApplicationName('Reactive Demo')
+
+    Reactive().notify_observers(
+        "DemoChannel",
+        "Message before Observer registration, will be discarded by the next one"
+    )
+    Reactive().notify_observers(
+        "DemoChannel",
+        "Message before Observer registration"
+    )
 
     reactive_a = ReactiveWidget()
     reactive_a.show()
