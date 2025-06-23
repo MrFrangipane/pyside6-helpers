@@ -15,24 +15,24 @@ _logger = logging.getLogger("Icon Generator")
 _DOC_COLUMN_COUNT = 4
 _MODULE = """from functools import cache
 
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QIcon, QPixmap
+from PySide6.QtGui import QIcon, QPixmap, QColor, Qt
+
 from pyside6helpers.resources import make_path
 
 
-def _make_white(filepath):
+def _make_color(filepath, color: QColor):
     pixmap = QPixmap(filepath)
     mask = pixmap.mask()
     white_pixmap = QPixmap(pixmap.size())
-    white_pixmap.fill(Qt.white)
+    white_pixmap.fill(color)
     white_pixmap.setMask(mask)
     return white_pixmap
 """
 _FUNCTION_TEMPLATE = """
 
 @cache
-def {name_function}() -> QIcon:
-    return QIcon(_make_white(make_path("icons/{name_file}.png")))
+def {name_function}(color: QColor = Qt.white) -> QIcon:
+    return QIcon(_make_color(make_path("icons/{name_file}.png"), color))
 """
 _DOC = """# Icons
 
