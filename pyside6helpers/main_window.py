@@ -1,6 +1,6 @@
 from PySide6.QtCore import QSettings, Signal
 from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import QLabel, QMainWindow
+from PySide6.QtWidgets import QLabel, QMainWindow, QApplication
 
 
 class MainWindow(QMainWindow):
@@ -16,7 +16,9 @@ class MainWindow(QMainWindow):
             logo_label.setPixmap(logo_pixmap)
             self.statusBar().addPermanentWidget(logo_label)
 
-        self._settings_tuple = settings_tuple  # FIXME explicit organization/application
+        organisation = QApplication.instance().organizationName()
+        application = QApplication.instance().applicationName()
+        self._settings_tuple = (organisation, application) if settings_tuple == tuple() else settings_tuple
 
         self._fist_time_shown = True
 
