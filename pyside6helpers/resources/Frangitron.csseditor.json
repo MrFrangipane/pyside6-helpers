@@ -266,6 +266,10 @@
       "",
       "QLabel:disabled {",
       "    color: {{ inactive }};",
+      "}",
+      "",
+      "QLabel[isWhite=\"true\"] {",
+      "    color: {{ white }};",
       "}"
     ],
     "Main Window": [

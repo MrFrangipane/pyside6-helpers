@@ -248,6 +248,10 @@ QLabel {
 QLabel:disabled {
     color: rgb(135, 135, 135);
 }
+
+QLabel[isWhite="true"] {
+    color: rgb(232, 232, 232);
+}
 QMainWindow {
     background-color: rgb(66, 66, 66);
 }
