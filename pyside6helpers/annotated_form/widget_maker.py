@@ -1,6 +1,9 @@
-from typing import get_type_hints, Any
+from typing import get_type_hints, Any, Annotated, get_origin, get_args
 
-from PySide6.QtWidgets import QWidget, QFormLayout
+from PySide6.QtWidgets import QWidget, QFormLayout, QLabel, QSlider
+
+from pyside6helpers.annotated_form.types import WidgetAnnotation, WidgetTypeEnum
+from pyside6helpers.slider import Slider
 
 
 class AnnotatedFormWidgetMaker:
@@ -20,8 +23,24 @@ class AnnotatedFormWidgetMaker:
 
         return new_widget
 
-    def _make_widget(self, name: str, type_hint: Any) -> None:
-        print(name, type_hint)
+    def _make_widget(self, name:str, type_hint: Any) -> None:
+        if get_origin(type_hint) != Annotated:
+            raise ValueError(f"Invalid widget annotation for {type_hint}")
+
+        type_, annotation = get_args(type_hint)
+        if not isinstance(annotation, WidgetAnnotation):
+            raise ValueError(f"Invalid widget annotation for {type_hint}")
+
+        annotation: WidgetAnnotation = annotation
+        if annotation.type == WidgetTypeEnum.Slider:
+            self._layout.addRow(
+                QLabel(annotation.label),
+                Slider(
+                    minimum=annotation.range[0],
+                    maximum=annotation.range[1],
+                    value=getattr(self._dataclass_instance, name)
+                )
+            )
 
 
 if __name__ == '__main__':
@@ -36,9 +55,13 @@ if __name__ == '__main__':
     @dataclass
     class DemoAnnotated:
         value_a: types.IntegerSliderType("Value A", (-100, 100))
+        value_b: types.IntegerSliderType("Value that is B", (0, 100))
+        value_c: types.IntegerSliderType("C", (-100, 0))
 
     instance = DemoAnnotated(
-        value_a=34
+        value_a=34,
+        value_b=56,
+        value_c=78
     )
 
     app = QApplication(sys.argv)

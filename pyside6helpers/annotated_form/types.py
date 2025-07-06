@@ -12,9 +12,9 @@ class WidgetTypeEnum(Enum):
 
 class WidgetAnnotation:
     def __init__(self, type_enum: WidgetTypeEnum, label: str, range_: Tuple[Any, Any]):
-        self._type = type_enum
-        self._label = label
-        self._range = range_
+        self.type = type_enum
+        self.label = label
+        self.range = range_
 
 
 def IntegerSliderType(label: str, range_: Tuple[int, int]):
