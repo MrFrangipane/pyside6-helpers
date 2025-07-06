@@ -1,6 +1,7 @@
 from typing import get_type_hints, Any, Annotated, get_origin, get_args, Type
 
-from PySide6.QtWidgets import QFormLayout, QLabel
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QFormLayout, QLabel, QPushButton, QCheckBox
 
 from pyside6helpers.annotated_form.form_widget import AnnotatedFormWidget
 from pyside6helpers.annotated_form.types import WidgetAnnotation, WidgetTypeEnum
@@ -46,6 +47,17 @@ class AnnotatedFormWidgetMaker:
                     on_value_changed=lambda value: self._new_widget.set_value(name, value)
                 )
             )
+
+        elif annotation.type == WidgetTypeEnum.Button:
+            button = QPushButton(annotation.label)
+            button.pressed.connect(lambda: self._new_widget.set_value(name, annotation.range[1]))
+            button.released.connect(lambda: self._new_widget.set_value(name, annotation.range[0]))
+            self._layout.addRow(QLabel(), button)
+
+        else:
+            checkbox = QCheckBox(annotation.label)
+            checkbox.checkStateChanged.connect(lambda state: self._new_widget.set_value(name, annotation.range[1] if state == Qt.CheckState.Checked else annotation.range[0]))
+            self._layout.addRow(QLabel(), checkbox)
 
 
 if __name__ == '__main__':
