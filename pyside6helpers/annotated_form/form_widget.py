@@ -1,20 +1,24 @@
-from typing import TypeVar, Generic
+from typing import TypeVar, Generic, Any
 
-from PySide6.QtCore import Signal
+from PySide6.QtCore import Signal, Slot
 from PySide6.QtWidgets import QWidget
 
 
 T = TypeVar("T")
 
 
-class FormWidget(QWidget, Generic[T]):
+class AnnotatedFormWidget(QWidget, Generic[T]):
 
-    valueChanged = Signal(T)
-    savePressed = Signal(T)
+    valueChanged = Signal(object)
 
-    def __init__(self, parent=None):
+    def __init__(self, dataclass_instance: T, parent=None):
         super().__init__(parent)
-        self._dataclass: T | None = None
+        self._dataclass_instance: T = dataclass_instance
 
     def value(self) -> T:
-        return self._dataclass
+        return self._dataclass_instance
+
+    @Slot()
+    def set_value(self, name: str, value: Any):
+        setattr(self._dataclass_instance, name, value)
+        self.valueChanged.emit(self._dataclass_instance)

@@ -1,6 +1,7 @@
 __all__ = [
+    'IntegerSliderType',
     'WidgetAnnotation',
-    'IntegerSliderType'
+    'WidgetTypeEnum',
 ]
 from enum import Enum
 from typing import Annotated, Tuple, Any
