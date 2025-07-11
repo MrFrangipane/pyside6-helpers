@@ -4,7 +4,7 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget, QGroupBox, QVBoxLayout, QHBoxLayout, QGridLayout, QSizePolicy
 
 
-def make_group(title: str, widgets: List[QWidget], orientation=Qt.Vertical, tooltip: str = None, fixed_width: int = None, fixed_height: int = None):
+def make_group(title: str, widgets: List[QWidget], orientation = Qt.Vertical, tooltip: str = None, fixed_width: int = None, fixed_height: int = None) -> QGroupBox:
     """
     Creates a QGroupBox with given widgets, title and orientation
     """
