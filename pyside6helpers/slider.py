@@ -1,3 +1,5 @@
+from typing import Callable
+
 from PySide6.QtCore import Qt, Slot
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QSlider
 
@@ -6,7 +8,7 @@ class Slider(QWidget):  # FIXME autocompletion ?
     """
     Thin wrapper for a QSlider that shows its value
     """
-    def __init__(self, name=None, is_vertical=False, minimum=0, maximum=0, value=0, single_step=1, on_value_changed: Slot=None, parent=None):
+    def __init__(self, name=None, is_vertical=False, minimum=0, maximum=0, value=0, single_step=1, on_value_changed: Callable=None, parent=None):
         QWidget.__init__(self, parent)
 
         if is_vertical:
