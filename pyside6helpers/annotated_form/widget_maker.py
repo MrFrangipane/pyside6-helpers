@@ -55,6 +55,7 @@ class AnnotatedFormWidgetMaker:
 
         elif annotation.type == WidgetTypeEnum.Slider:
             self._add_row(
+                name,
                 QLabel(annotation.label),
                 Slider(
                     minimum=annotation.range[0],
@@ -69,14 +70,16 @@ class AnnotatedFormWidgetMaker:
             button = QPushButton(annotation.label)
             button.pressed.connect(lambda: self._new_widget.set_value(name, annotation.range[1]))
             button.released.connect(lambda: self._new_widget.set_value(name, annotation.range[0]))
-            self._add_row(QLabel(), button, annotation.group)
+            self._add_row(name, QLabel(), button, annotation.group)
 
         else:
             checkbox = QCheckBox(annotation.label)
+            checkbox.setChecked(getattr(self._dataclass_instance, name))
             checkbox.checkStateChanged.connect(lambda state: self._new_widget.set_value(name, annotation.range[1] if state == Qt.CheckState.Checked else annotation.range[0]))
-            self._add_row(QLabel(), checkbox, annotation.group)
+            self._add_row(name, QLabel(), checkbox, annotation.group)
 
-    def _add_row(self, label: QLabel, widget: QWidget, group: str):
+    def _add_row(self, field_name: str, label: QLabel, widget: QWidget, group: str):
+        self._new_widget.widgets[field_name] = widget
         group_names = [group_name for group_name, _ in self._widgets]
 
         if not group:
