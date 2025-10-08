@@ -27,9 +27,6 @@ class AnnotatedFormWidgetMaker:
         for name, type_hint in items:
             self._make_widget(name, type_hint)
 
-        from pprint import pprint
-        pprint(self._widgets)
-
         for group_name, widgets in self._widgets:
             if not group_name:
                 for label, widget in widgets:
