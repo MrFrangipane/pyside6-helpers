@@ -9,7 +9,7 @@ T = TypeVar("T")
 
 class AnnotatedFormWidget(QWidget, Generic[T]):
 
-    valueChanged = Signal(object)
+    valueChanged = Signal(object, str)
 
     def __init__(self, dataclass_instance: T, parent=None):
         super().__init__(parent)
@@ -21,4 +21,4 @@ class AnnotatedFormWidget(QWidget, Generic[T]):
     @Slot()
     def set_value(self, name: str, value: Any):
         setattr(self._dataclass_instance, name, value)
-        self.valueChanged.emit(self._dataclass_instance)
+        self.valueChanged.emit(self._dataclass_instance, name)
