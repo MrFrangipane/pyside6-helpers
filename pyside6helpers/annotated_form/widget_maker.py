@@ -24,8 +24,8 @@ class AnnotatedFormWidgetMaker:
         )
         self._layout = QFormLayout(self._new_widget)
 
-        for name, type_hint in items:
-            self._make_widget(name, type_hint)
+        for field_name, type_hint in items:
+            self._make_widget(field_name, type_hint)
 
         for group_name, widgets in self._widgets:
             if not group_name:
@@ -41,7 +41,7 @@ class AnnotatedFormWidgetMaker:
 
         return self._new_widget
 
-    def _make_widget(self, name:str, type_hint: Any) -> None:
+    def _make_widget(self, field_name:str, type_hint: Any) -> None:
         if get_origin(type_hint) != Annotated:
             raise ValueError(f"Invalid widget annotation for {type_hint}")
 
@@ -55,28 +55,28 @@ class AnnotatedFormWidgetMaker:
 
         elif annotation.type == WidgetTypeEnum.Slider:
             self._add_row(
-                name,
+                field_name,
                 QLabel(annotation.label),
                 Slider(
                     minimum=annotation.range[0],
                     maximum=annotation.range[1],
-                    value=getattr(self._dataclass_instance, name),
-                    on_value_changed=lambda value: self._new_widget.set_value(name, value)
+                    value=getattr(self._dataclass_instance, field_name),
+                    on_value_changed=lambda value: self._new_widget.set_value(field_name, value)
                 ),
                 annotation.group
             )
 
         elif annotation.type == WidgetTypeEnum.Button:
             button = QPushButton(annotation.label)
-            button.pressed.connect(lambda: self._new_widget.set_value(name, annotation.range[1]))
-            button.released.connect(lambda: self._new_widget.set_value(name, annotation.range[0]))
-            self._add_row(name, QLabel(), button, annotation.group)
+            button.pressed.connect(lambda: self._new_widget.set_value(field_name, annotation.range[1]))
+            button.released.connect(lambda: self._new_widget.set_value(field_name, annotation.range[0]))
+            self._add_row(field_name, QLabel(), button, annotation.group)
 
         else:
             checkbox = QCheckBox(annotation.label)
-            checkbox.setChecked(getattr(self._dataclass_instance, name))
-            checkbox.checkStateChanged.connect(lambda state: self._new_widget.set_value(name, annotation.range[1] if state == Qt.CheckState.Checked else annotation.range[0]))
-            self._add_row(name, QLabel(), checkbox, annotation.group)
+            checkbox.setChecked(getattr(self._dataclass_instance, field_name))
+            checkbox.checkStateChanged.connect(lambda state: self._new_widget.set_value(field_name, annotation.range[1] if state == Qt.CheckState.Checked else annotation.range[0]))
+            self._add_row(field_name, QLabel(), checkbox, annotation.group)
 
     def _add_row(self, field_name: str, label: QLabel, widget: QWidget, group: str):
         self._new_widget.widgets[field_name] = widget

@@ -41,5 +41,8 @@ class Slider(QWidget):  # FIXME autocompletion ?
     def _update_label(self, value):
         self.label.setText(f"{value}")
 
+    def hasFocus(self):
+        return self.slider.hasFocus()
+
     def __getattr__(self, item):
         return getattr(self.slider, item)
