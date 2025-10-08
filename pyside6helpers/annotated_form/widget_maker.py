@@ -1,7 +1,8 @@
 from typing import get_type_hints, Any, Annotated, get_origin, get_args, Type, Tuple
 
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QWidget, QFormLayout, QLabel, QPushButton, QCheckBox, QGroupBox, QVBoxLayout, QRadioButton
+from PySide6.QtWidgets import QWidget, QFormLayout, QLabel, QPushButton, QCheckBox, QGroupBox, QVBoxLayout, \
+    QRadioButton, QHBoxLayout
 
 from pyside6helpers.annotated_form.form_widget import AnnotatedFormWidget
 from pyside6helpers.annotated_form.types import WidgetAnnotation, WidgetTypeEnum
@@ -77,7 +78,7 @@ class AnnotatedFormWidgetMaker:
 
         elif annotation.type == WidgetTypeEnum.Radio:
             widget = QWidget()
-            layout = QVBoxLayout(widget)
+            layout = QVBoxLayout(widget) if annotation.orientation == Qt.Vertical else QHBoxLayout(widget)
             layout.setContentsMargins(0, 0, 0, 0)
             for enum_name, enum_value in annotation.values:
                 radio = QRadioButton(enum_name)
@@ -85,6 +86,9 @@ class AnnotatedFormWidgetMaker:
                 # Python lambda closure issue resolved using default parameters
                 radio.clicked.connect(lambda checked, fn=field_name, v=enum_value: self._handle_radio_click(fn, enum_name, v))
                 layout.addWidget(radio)
+
+            if annotation.orientation == Qt.Horizontal:
+                layout.addStretch()
 
             self._add_row(field_name, QLabel(annotation.label), widget, annotation.group)
 

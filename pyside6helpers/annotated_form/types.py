@@ -46,10 +46,11 @@ def NoWidgetType():
     )]
 
 
-def RadioEnumType(label: str, enum_type: Type[Enum], group: str = None):
+def RadioEnumType(label: str, enum_type: Type[Enum], orientation: int = None, group: str = None):
     return Annotated[int, WidgetAnnotation(
         type_enum=WidgetTypeEnum.Radio,
         label=label,
         values=[(i.name, i) for i in enum_type],
+        orientation=orientation,
         group=group
     )]
