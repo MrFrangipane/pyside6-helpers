@@ -1,7 +1,7 @@
 from typing import get_type_hints, Any, Annotated, get_origin, get_args, Type, Tuple
 
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QWidget, QFormLayout, QLabel, QPushButton, QCheckBox, QGroupBox
+from PySide6.QtWidgets import QWidget, QFormLayout, QLabel, QPushButton, QCheckBox, QGroupBox, QVBoxLayout, QRadioButton
 
 from pyside6helpers.annotated_form.form_widget import AnnotatedFormWidget
 from pyside6helpers.annotated_form.types import WidgetAnnotation, WidgetTypeEnum
@@ -49,7 +49,10 @@ class AnnotatedFormWidgetMaker:
         if not isinstance(annotation, WidgetAnnotation):
             raise ValueError(f"Invalid widget annotation for {type_hint}")
 
-        annotation: WidgetAnnotation = annotation
+
+        value = getattr(self._dataclass_instance, field_name)
+        annotation: WidgetAnnotation = annotation  # type hinting only ?
+
         if annotation.type == WidgetTypeEnum.NoWidget:
             return
 
@@ -60,7 +63,7 @@ class AnnotatedFormWidgetMaker:
                 Slider(
                     minimum=annotation.range[0],
                     maximum=annotation.range[1],
-                    value=getattr(self._dataclass_instance, field_name),
+                    value=value,
                     on_value_changed=lambda value: self._new_widget.set_value(field_name, value)
                 ),
                 annotation.group
@@ -72,13 +75,26 @@ class AnnotatedFormWidgetMaker:
             button.released.connect(lambda: self._new_widget.set_value(field_name, annotation.range[0]))
             self._add_row(field_name, QLabel(), button, annotation.group)
 
+        elif annotation.type == WidgetTypeEnum.Radio:
+            widget = QWidget()
+            layout = QVBoxLayout(widget)
+            layout.setContentsMargins(0, 0, 0, 0)
+            for enum_name, enum_value in annotation.values:
+                radio = QRadioButton(enum_name)
+                radio.setChecked(value == enum_value)
+                # Python lambda closure issue resolved using default parameters
+                radio.clicked.connect(lambda checked, fn=field_name, v=enum_value: self._handle_radio_click(fn, enum_name, v))
+                layout.addWidget(radio)
+
+            self._add_row(field_name, QLabel(annotation.label), widget, annotation.group)
+
         else:
             checkbox = QCheckBox(annotation.label)
-            checkbox.setChecked(getattr(self._dataclass_instance, field_name))
+            checkbox.setChecked(value)
             checkbox.checkStateChanged.connect(lambda state: self._new_widget.set_value(field_name, annotation.range[1] if state == Qt.CheckState.Checked else annotation.range[0]))
-            self._add_row(field_name, QLabel(), checkbox, annotation.group)
+            self._add_row(field_name, None, checkbox, annotation.group)
 
-    def _add_row(self, field_name: str, label: QLabel, widget: QWidget, group: str):
+    def _add_row(self, field_name: str, label: QLabel | None, widget: QWidget, group: str):
         self._new_widget.widgets[field_name] = widget
         group_names = [group_name for group_name, _ in self._widgets]
 
@@ -92,14 +108,23 @@ class AnnotatedFormWidgetMaker:
 
             self._widgets[group_names.index(group)][1].append((label, widget))
 
+    def _handle_radio_click(self, field_name: str, name: str, value: Any):
+        self._new_widget.set_value(field_name, value)
 
 if __name__ == '__main__':
     import sys
     from dataclasses import dataclass
+    from enum import Enum
 
     from PySide6.QtWidgets import QApplication, QWidget
 
     from pyside6helpers.annotated_form import types
+
+
+    class RadioEnum(Enum):
+        Un = 1
+        Deux = "Deux"
+        Trois = 3.0
 
 
     @dataclass
@@ -108,16 +133,18 @@ if __name__ == '__main__':
         value_b: types.IntegerSliderType("Value that is B", (0, 100))
         value_c: types.IntegerSliderType("C", (-100, 0), group="Group CD")
         value_d: types.IntegerSliderType("D", (-100, 0), group="Group CD")
+        value_e: types.RadioEnumType("Enum", RadioEnum)
 
     instance = DemoAnnotated(
         value_a=34,
         value_b=56,
         value_c=78,
-        value_d=90
+        value_d=90,
+        value_e=RadioEnum.Trois,
     )
 
     def changed(value: DemoAnnotated, sender: str):
-        print(sender, value)
+        print(">>", sender, value)
 
     app = QApplication(sys.argv)
     widget_ = AnnotatedFormWidgetMaker(instance).make_widget()

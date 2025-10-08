@@ -1,27 +1,15 @@
 __all__ = [
-    "ButtonType",
-    "CheckBoxType",
+    'ButtonType',
+    'CheckBoxType',
     'IntegerSliderType',
-    'WidgetAnnotation',
-    'WidgetTypeEnum',
+    'NoWidgetType',
+    'RadioEnumType'
 ]
 from enum import Enum
-from typing import Annotated, Tuple, Any
+from typing import Annotated, Tuple, Type
 
-
-class WidgetTypeEnum(Enum):
-    NoWidget = 0
-    Button = 1
-    CheckBox = 2
-    Slider = 3
-
-
-class WidgetAnnotation:
-    def __init__(self, type_enum: WidgetTypeEnum, label: str, range_: Tuple[Any, Any], group: str):
-        self.type = type_enum
-        self.label = label
-        self.range = range_
-        self.group = group
+from pyside6helpers.annotated_form.annotation import WidgetAnnotation
+from pyside6helpers.annotated_form.type_enum import WidgetTypeEnum
 
 
 def ButtonType(label: str, range_: Tuple[int, int], group: str = None):
@@ -50,10 +38,18 @@ def IntegerSliderType(label: str, range_: Tuple[int, int], group: str = None):
         group=group
     )]
 
+
 def NoWidgetType():
     return Annotated[int, WidgetAnnotation(
         type_enum=WidgetTypeEnum.NoWidget,
         label="",
-        range_=(0, 0),
-        group=None
+    )]
+
+
+def RadioEnumType(label: str, enum_type: Type[Enum], group: str = None):
+    return Annotated[int, WidgetAnnotation(
+        type_enum=WidgetTypeEnum.Radio,
+        label=label,
+        values=[(i.name, i) for i in enum_type],
+        group=group
     )]
