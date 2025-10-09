@@ -52,7 +52,7 @@ class AnnotatedFormWidgetMaker:
 
 
         value = getattr(self._dataclass_instance, field_name)
-        annotation: WidgetAnnotation = annotation  # type hinting only ?
+        annotation: WidgetAnnotation = annotation  # type hinting only?
 
         if annotation.type == WidgetTypeEnum.NoWidget:
             return
