@@ -1,4 +1,4 @@
-from typing import get_type_hints, Any, Annotated, get_origin, get_args, Type, Tuple
+from typing import get_type_hints, Any, Annotated, get_origin, get_args, Type
 
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget, QFormLayout, QLabel, QPushButton, QCheckBox, QGroupBox, QVBoxLayout, \
@@ -15,7 +15,7 @@ class AnnotatedFormWidgetMaker:
         self._dataclass_instance = dataclass_instance
         self._layout: QFormLayout | None = None
         self._new_widget: AnnotatedFormWidget[Type[Any]] | None = None
-        self._widgets: list[Tuple[str, Tuple[QWidget, QWidget]]] = []
+        self._widgets: list[tuple[str, tuple[QWidget, QWidget]]] = []
 
     def make_widget(self) -> AnnotatedFormWidget[Type[Any]]:
         items = get_type_hints(self._dataclass_instance, include_extras=True).items()

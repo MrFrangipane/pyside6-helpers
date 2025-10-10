@@ -6,13 +6,13 @@ __all__ = [
     'RadioEnumType'
 ]
 from enum import Enum
-from typing import Annotated, Tuple, Type
+from typing import Annotated, Type
 
 from pyside6helpers.annotated_form.annotation import WidgetAnnotation
 from pyside6helpers.annotated_form.type_enum import WidgetTypeEnum
 
 
-def ButtonType(label: str, range_: Tuple[int, int], group: str = None):
+def ButtonType(label: str, range_: tuple[int, int], group: str = None):
     return Annotated[int, WidgetAnnotation(
         type_enum=WidgetTypeEnum.Button,
         label=label,
@@ -21,7 +21,7 @@ def ButtonType(label: str, range_: Tuple[int, int], group: str = None):
     )]
 
 
-def CheckBoxType(label: str, range_: Tuple[int, int], group: str = None):
+def CheckBoxType(label: str, range_: tuple[int, int], group: str = None):
     return Annotated[bool, WidgetAnnotation(
         type_enum=WidgetTypeEnum.CheckBox,
         label=label,
@@ -30,7 +30,7 @@ def CheckBoxType(label: str, range_: Tuple[int, int], group: str = None):
     )]
 
 
-def IntegerSliderType(label: str, range_: Tuple[int, int], group: str = None):
+def IntegerSliderType(label: str, range_: tuple[int, int], group: str = None):
     return Annotated[int, WidgetAnnotation(
         type_enum=WidgetTypeEnum.Slider,
         label=label,

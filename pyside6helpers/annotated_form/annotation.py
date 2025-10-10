@@ -1,4 +1,4 @@
-from typing import Any, Tuple, Type
+from typing import Any
 
 from PySide6.QtCore import Qt
 
@@ -6,7 +6,7 @@ from pyside6helpers.annotated_form.type_enum import WidgetTypeEnum
 
 
 class WidgetAnnotation:
-    def __init__(self, type_enum: WidgetTypeEnum, label: str, range_: Tuple[Any, Any] | None = None, group: str | None = None, values: list[Any] = None, orientation: int | None = None):
+    def __init__(self, type_enum: WidgetTypeEnum, label: str, range_: tuple[Any, Any] | None = None, group: str | None = None, values: list[Any] = None, orientation: int | None = None):
         self.type = type_enum
         self.label = label
         self.range = range_
