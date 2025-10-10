@@ -11,6 +11,8 @@ class Slider(QWidget):  # FIXME autocompletion ?
     def __init__(self, name=None, is_vertical=False, minimum=0, maximum=0, value=0, single_step=1, on_value_changed: Callable=None, parent=None):
         QWidget.__init__(self, parent)
 
+        value = min(max(minimum, value), maximum)
+
         if is_vertical:
             self.slider = QSlider(Qt.Vertical)
             layout = QVBoxLayout(self)
