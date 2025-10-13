@@ -18,3 +18,24 @@ def make_path(resource_name: str = "") -> str:
 
 def set_root(root_path: str) -> None:
     _Resources().root = root_path
+
+
+def find_from(current_file: str, resource_name: str) -> str:
+    current_dir = os.path.abspath(os.path.dirname(current_file))
+    resources_dir = "resources"
+
+    while current_dir:
+        potential_resources_path = os.path.join(current_dir, resources_dir)
+        if os.path.isdir(potential_resources_path):
+            path = os.path.join(potential_resources_path, resource_name)
+            if not os.path.isfile(path):
+                raise FileNotFoundError(f"Could not find {resource_name} in {potential_resources_path}")
+            return path
+
+        parent_dir = os.path.dirname(current_dir)
+        if parent_dir == current_dir:
+            break
+
+        current_dir = parent_dir
+
+    raise FileNotFoundError(f"Could not find a 'resources' folder starting from {current_file}")
