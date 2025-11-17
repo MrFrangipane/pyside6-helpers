@@ -41,7 +41,11 @@ class MainWindow(QMainWindow):
         event.accept()
 
     def set_wait(self, is_wait: bool):
-        QApplication.setOverrideCursor(QCursor(Qt.WaitCursor) if is_wait else QCursor(Qt.ArrowCursor))
+        if is_wait:
+            QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
+        else:
+            QApplication.restoreOverrideCursor()
+
         self.setEnabled(not is_wait)
 
     def save_geometry(self):
