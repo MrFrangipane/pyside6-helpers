@@ -21,7 +21,7 @@ def set_root(root_path: str) -> None:
     _Resources().root = root_path
 
 
-def find_from(resource_name: str, current_file: str | None = None) -> str:
+def find(resource_name: str, current_file: str | None = None) -> str:
     if current_file is None:
         current_file = sys.argv[0]
 
