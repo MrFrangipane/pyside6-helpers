@@ -1,5 +1,5 @@
 from PySide6.QtCore import QSettings, Signal
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, QCursor, Qt
 from PySide6.QtWidgets import QLabel, QMainWindow, QApplication
 
 
@@ -39,6 +39,10 @@ class MainWindow(QMainWindow):
             self.firstTimeShown.emit()
 
         event.accept()
+
+    def set_wait(self, is_wait: bool):
+        QApplication.setOverrideCursor(QCursor(Qt.WaitCursor) if is_wait else QCursor(Qt.ArrowCursor))
+        self.setEnabled(not is_wait)
 
     def save_geometry(self):
         if self._settings_tuple:
