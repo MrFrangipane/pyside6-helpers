@@ -65,6 +65,11 @@ def cancel(color: QColor = Qt.white) -> QIcon:
 
 
 @cache
+def cells(color: QColor = Qt.white) -> QIcon:
+    return QIcon(_make_color(make_path("icons/cells.png"), color))
+
+
+@cache
 def certificate(color: QColor = Qt.white) -> QIcon:
     return QIcon(_make_color(make_path("icons/certificate.png"), color))
 
@@ -92,6 +97,11 @@ def cloud_computing(color: QColor = Qt.white) -> QIcon:
 @cache
 def credit_card(color: QColor = Qt.white) -> QIcon:
     return QIcon(_make_color(make_path("icons/credit-card.png"), color))
+
+
+@cache
+def csv_file(color: QColor = Qt.white) -> QIcon:
+    return QIcon(_make_color(make_path("icons/csv-file.png"), color))
 
 
 @cache
