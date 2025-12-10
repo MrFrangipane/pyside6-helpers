@@ -4,7 +4,7 @@ import sys
 
 from pythonhelpers.singleton_metaclass import SingletonMetaclass
 
-logging.getLogger(__name__).warning("This module is deprecated. Use importlib.resources instead.")
+logging.getLogger(__name__).warning("The pyside6helpers.resources module is deprecated. Use importlib.resources instead.")
 
 
 class _Resources(metaclass=SingletonMetaclass):
