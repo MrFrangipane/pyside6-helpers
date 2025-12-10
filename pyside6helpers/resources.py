@@ -1,7 +1,10 @@
+import logging
 import os.path
 import sys
 
 from pythonhelpers.singleton_metaclass import SingletonMetaclass
+
+logging.getLogger(__name__).warning("This module is deprecated. Use importlib.resources instead.")
 
 
 class _Resources(metaclass=SingletonMetaclass):
