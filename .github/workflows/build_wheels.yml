@@ -1,0 +1,38 @@
+name: Build Wheels
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # windows-latest for Win10, ubuntu-latest for RPi (via emulation)
+        os: [windows-latest, ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        if: runner.os == 'Linux'
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.21.3
+        env:
+          # Build for specific architectures
+          # CP311-* matches your project's Python 3.11 requirement
+          CIBW_BUILD: "cp311-*"
+          CIBW_ARCHS_LINUX: "aarch64"
+          CIBW_ARCHS_WINDOWS: "AMD64"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
+          path: ./wheelhouse/*.whl
