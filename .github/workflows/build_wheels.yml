@@ -24,8 +24,10 @@ jobs:
       - name: Build wheel
         run: python -m build
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          name: python-package-wheel
-          path: dist/*.whl
+          files: dist/*.whl
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
