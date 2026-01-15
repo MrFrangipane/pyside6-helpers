@@ -6,6 +6,10 @@ on:
     tags: [ 'v*' ]
   workflow_dispatch:
 
+# Add this block here:
+permissions:
+  contents: write
+
 jobs:
   build_pure_python_wheel:
     name: Build Universal Wheel
@@ -25,11 +29,11 @@ jobs:
       - name: Build wheel
         run: python -m build
 
-      - name: Upload wheel
-        uses: actions/upload-artifact@v4
-        with:
-          name: python-package-wheel
-          path: dist/*.whl
+#      - name: Upload wheel
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: python-package-wheel
+#          path: dist/*.whl
 
       - name: Release
         uses: softprops/action-gh-release@v2
