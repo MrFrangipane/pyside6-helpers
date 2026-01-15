@@ -30,7 +30,7 @@ dynamic = ["dependencies"]
 
 [tool.setuptools]
 include-package-data = true
+packages = ["pyside6helpers"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
-
