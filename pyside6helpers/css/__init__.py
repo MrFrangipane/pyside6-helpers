@@ -1,9 +1,9 @@
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget, QApplication
 
 from pyside6helpers import resources
 
 
-def load_onto(q_widget: QWidget):
-    filepath = resources.make_path("dark.qss")
+def load_onto(target: QWidget | QApplication, theme_filename: str = "dark.qss"):
+    filepath = resources.make_path(theme_filename)
     with open(filepath, "r") as stylesheet_file:
-        q_widget.setStyleSheet(stylesheet_file.read())
+        target.setStyleSheet(stylesheet_file.read())
