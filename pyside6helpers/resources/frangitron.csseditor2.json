@@ -12,7 +12,7 @@
       "}",
       "",
       "*:focus {",
-      "border: 1px solid white",
+      "  border: {{ line_size }}px solid {{ foreground }};",
       "}",
       "",
       "",
@@ -33,6 +33,16 @@
       "",
       "QGroupBox {",
       "  background-color: {{ background_layered }};",
+      "}",
+      "",
+      "QSlider:focus {",
+      "  border-width: 0;",
+      "}",
+      "",
+      "QTabBar::tab {",
+      "    border: none;",
+      "    background-color: {{ background_layered }};",
+      "    padding: {{ padding }}px;",
       "}"
     ]
   },
@@ -71,6 +81,11 @@
       "name": "radius",
       "desktop_value": "2",
       "touch_value": "4"
+    },
+    {
+      "name": "line_size",
+      "desktop_value": "1",
+      "touch_value": "2"
     }
   ],
   "save_to": ""
