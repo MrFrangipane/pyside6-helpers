@@ -48,6 +48,10 @@ class PreviewWidget(QMainWindow):
         # Create a menu bar
         self.create_menu_bar()
 
+        # Set tooltip for all widgets to their class name
+        for widget in self.findChildren(QWidget):
+            widget.setToolTip(widget.__class__.__name__)
+
     def create_toolbar(self):
         self.toolbar = QToolBar("Main Toolbar", self)
         self.addToolBar(self.toolbar)

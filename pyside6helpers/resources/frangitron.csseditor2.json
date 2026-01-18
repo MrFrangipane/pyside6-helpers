@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "templates": {
+    "Main": [
+      "* {",
+      "  font: {{ font_size }}pt;",
+      "  color: {{ foreground }};",
+      "  background-color: transparent;",
+      "  border-radius: {{ radius }}px;",
+      "  outline: none;",
+      "  padding: {{ padding }}px;",
+      "}",
+      "",
+      "*:focus {",
+      "border: 1px solid white",
+      "}",
+      "",
+      "",
+      "QMainWindow, QFrame {",
+      "  background-color: {{ background }};",
+      "}",
+      "QLabel {",
+      "  background-color: transparent;",
+      "}",
+      "",
+      "QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QDateEdit, QTimeEdit, QDateTimeEdit, QComboBox {",
+      "  background-color: {{ background_layered }};",
+      "}",
+      "",
+      "QPushButton {",
+      "  background-color: {{ accent1 }};",
+      "}",
+      "",
+      "QGroupBox {",
+      "  background-color: {{ background_layered }};",
+      "}"
+    ]
+  },
+  "variables": [
+    {
+      "name": "background",
+      "desktop_value": "[70, 70, 70]",
+      "touch_value": "[70, 70, 70]"
+    },
+    {
+      "name": "foreground",
+      "desktop_value": "[214, 214, 214]",
+      "touch_value": "[214, 214, 214]"
+    },
+    {
+      "name": "accent1",
+      "desktop_value": "[71, 166, 255]",
+      "touch_value": "[71, 166, 255]"
+    },
+    {
+      "name": "padding",
+      "desktop_value": "2",
+      "touch_value": "10"
+    },
+    {
+      "name": "font_size",
+      "desktop_value": "10",
+      "touch_value": "12"
+    },
+    {
+      "name": "background_layered",
+      "desktop_value": "[255, 255, 255, 30]",
+      "touch_value": "[255, 255, 255, 30]"
+    },
+    {
+      "name": "radius",
+      "desktop_value": "2",
+      "touch_value": "4"
+    }
+  ],
+  "save_to": ""
+}
