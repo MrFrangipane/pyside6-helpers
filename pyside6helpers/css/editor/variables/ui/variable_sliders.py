@@ -25,6 +25,7 @@ class VariableSliders(QWidget):
         self.value.valueChanged.connect(self._changed)
 
         layout = QGridLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(QLabel("H"))
         layout.addWidget(QLabel("S"))
         layout.addWidget(QLabel("V"))
@@ -34,9 +35,15 @@ class VariableSliders(QWidget):
 
     def set_rgb(self, r, g, b):
         h, s, v = colorsys.rgb_to_hsv(r / 255.0, g / 255.0, b / 255.0)
+        self.hue.blockSignals(True)
+        self.saturation.blockSignals(True)
+        self.value.blockSignals(True)
         self.hue.setValue(h * 100)
         self.saturation.setValue(s * 100)
         self.value.setValue(v * 100)
+        self.hue.blockSignals(False)
+        self.saturation.blockSignals(False)
+        self.value.blockSignals(False)
 
     def _changed(self):
         r, g, b = colorsys.hsv_to_rgb(

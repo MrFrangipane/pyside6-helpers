@@ -1,8 +1,13 @@
 from functools import cache
+from importlib import resources
 
 from PySide6.QtGui import QIcon, QPixmap, QColor, Qt
 
-from pyside6helpers.resources import make_path
+
+def make_path(filepath: str) -> str:
+    resource_path = resources.files("pyside6helpers.resources").joinpath(filepath)
+    with resources.as_file(resource_path) as p:
+        return str(p)
 
 
 def _make_color(filepath, color: QColor):
