@@ -20,6 +20,6 @@ class Project:
         if mode == "desktop":
             return {v.name: v.desktop_value for v in self.variables}
         elif mode == "touch":
-            return {v.name: v.touch_value for v in self.variables}
+            return {v.name: v.touch_value if v.touch_value else v.desktop_value for v in self.variables}
         else:
             raise ValueError(f"Invalid mode: {mode}")
