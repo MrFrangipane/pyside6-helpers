@@ -11,20 +11,25 @@
       "  padding: {{ padding }}px;",
       "}",
       "",
-      "*:focus {",
+      "{{ interactives }} {",
+      "  background-color: {{ background_layered }};",
+      "}",
+      "",
+      "{{ interactives }}:focus {",
       "  border: {{ line_size }}px solid {{ foreground }};",
       "}",
       "",
       "",
+      "{{ interactives }}:hover {",
+      "  background-color: {{ hovered }};",
+      "}",
+      "",
       "QMainWindow, QFrame {",
       "  background-color: {{ background }};",
       "}",
+      "",
       "QLabel {",
       "  background-color: transparent;",
-      "}",
-      "",
-      "QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QDateEdit, QTimeEdit, QDateTimeEdit, QComboBox {",
-      "  background-color: {{ background_layered }};",
       "}",
       "",
       "QPushButton {",
@@ -41,8 +46,11 @@
       "",
       "QTabBar::tab {",
       "    border: none;",
-      "    background-color: {{ background_layered }};",
       "    padding: {{ padding }}px;",
+      "}",
+      "",
+      "QToolBar  {",
+      "    background-color: {{ background }};",
       "}"
     ]
   },
@@ -50,17 +58,17 @@
     {
       "name": "background",
       "desktop_value": "[70, 70, 70]",
-      "touch_value": "[70, 70, 70]"
+      "touch_value": ""
     },
     {
       "name": "foreground",
-      "desktop_value": "[214, 214, 214]",
-      "touch_value": "[214, 214, 214]"
+      "desktop_value": "[234, 234, 234]",
+      "touch_value": ""
     },
     {
-      "name": "accent1",
+      "name": "accent1_hover",
       "desktop_value": "[71, 166, 255]",
-      "touch_value": "[71, 166, 255]"
+      "touch_value": ""
     },
     {
       "name": "padding",
@@ -75,7 +83,7 @@
     {
       "name": "background_layered",
       "desktop_value": "[255, 255, 255, 30]",
-      "touch_value": "[255, 255, 255, 30]"
+      "touch_value": ""
     },
     {
       "name": "radius",
@@ -86,7 +94,22 @@
       "name": "line_size",
       "desktop_value": "1",
       "touch_value": "2"
+    },
+    {
+      "name": "interactives",
+      "desktop_value": "{QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QDateEdit, QTimeEdit, QDateTimeEdit, QComboBox, QPushButton, QCheckBox, QRadioButton, QTabBar::tab}",
+      "touch_value": ""
+    },
+    {
+      "name": "hovered",
+      "desktop_value": "[153, 153, 153]",
+      "touch_value": ""
+    },
+    {
+      "name": "accent1",
+      "desktop_value": "[59, 158, 229]",
+      "touch_value": ""
     }
   ],
-  "save_to": ""
+  "save_to": "E:\\PROJECTS_2023\\pyside6-helpers\\pyside6helpers\\resources\\dark-2.qss"
 }
