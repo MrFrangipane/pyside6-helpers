@@ -1,7 +1,7 @@
 from PySide6.QtCore import Signal, Qt
 from PySide6.QtWidgets import (
-    QWidget, QTableWidget, QTableWidgetItem, QVBoxLayout, 
-    QPushButton, QHBoxLayout, QHeaderView
+    QWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
+    QPushButton, QHBoxLayout, QHeaderView, QAbstractItemView
 )
 from .variable_sliders import VariableSliders
 from ...project.models import Variable
@@ -20,10 +20,13 @@ class VariablesWidget(QWidget):
         self.table = QTableWidget()
         self.table.setColumnCount(4)
         self.table.setHorizontalHeaderLabels(["Name", "Desktop", "Touch", ""])
-        self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
-        self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeToContents)
-        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeToContents)
-        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.Fixed)
+
+        horizontal_header = self.table.horizontalHeader()
+        horizontal_header.setSectionResizeMode(QHeaderView.Interactive)
+        horizontal_header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        horizontal_header.setSectionResizeMode(3, QHeaderView.Fixed)
+        self.table.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
+        self.table.setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
         self.table.setColumnWidth(3, 30)
 
         self.table.itemChanged.connect(self._on_item_changed)
