@@ -38,6 +38,4 @@ class CSSRenderer:
             full_css.append(f"/* Section: {section_name} */")
             full_css.append(rendered_section)
 
-        print("\n\n".join(full_css))
-
         return "\n\n".join(full_css)
