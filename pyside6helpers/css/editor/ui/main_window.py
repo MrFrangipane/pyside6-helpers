@@ -50,12 +50,20 @@ class EditorMainWindow(MainWindow):
         self.disabled_button.setCheckable(True)
         self.disabled_button.clicked.connect(self._on_disabled_changed)
 
+        self.apply_to_editor_button = QPushButton("Apply to Editor")
+        self.apply_to_editor_button.clicked.connect(self._on_apply_to_editor)
+
+        self.clear_editor_button = QPushButton("Clear Editor style")
+        self.clear_editor_button.clicked.connect(self._on_clear_editor)
+
         # Set default state
         self.desktop_radio.setChecked(True)
 
         header_layout.addWidget(self.desktop_radio)
         header_layout.addWidget(self.touch_radio)
         header_layout.addWidget(self.disabled_button)
+        header_layout.addWidget(self.apply_to_editor_button)
+        header_layout.addWidget(self.clear_editor_button)
 
         self.mode_group.buttonClicked.connect(self._on_mode_changed)
         
@@ -97,6 +105,14 @@ class EditorMainWindow(MainWindow):
         self.variables_widget.set_variables(self.project.variables)
         self.templates_widget.set_sections(self.project.templates)
         self.statusBar().showMessage("Project loaded", 2000)
+
+    def _on_apply_to_editor(self):
+        mode = self.mode_group.checkedButton().text().lower()
+        css = self.renderer.render(self.project, mode)
+        self.setStyleSheet(css)
+
+    def _on_clear_editor(self):
+        self.setStyleSheet("")
 
     def _on_data_changed(self):
         self.project.variables = self.variables_widget.get_variables()
