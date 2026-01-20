@@ -231,6 +231,7 @@ class PreviewWidget(QMainWindow):
 
         # Table
         table = QTableWidget(3, 3)
+        table.setAlternatingRowColors(True)
         table.setHorizontalHeaderLabels(["A", "B", "C"])
         for r in range(3):
             for c in range(3):
@@ -239,11 +240,13 @@ class PreviewWidget(QMainWindow):
 
         # List
         list_widget = QListWidget()
+        list_widget.setAlternatingRowColors(True)
         list_widget.addItems(["Item Alpha", "Item Beta", "Item Gamma", "Item Delta"])
         layout.addWidget(list_widget)
 
         # Tree
         tree = QTreeWidget()
+        tree.setAlternatingRowColors(True)
         tree.setHeaderLabels(["Key", "Value"])
         root = QTreeWidgetItem(tree, ["Root", ""])
         child1 = QTreeWidgetItem(root, ["Child 1", "Val 1"])

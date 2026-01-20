@@ -14,7 +14,7 @@ class Project:
     name: str
     templates: Dict[str, str] = field(default_factory=dict)
     variables: List[Variable] = field(default_factory=list)
-    save_to: str = ""
+    save_to_filepath: str = ""
     
     def get_variables_dict(self, mode: str) -> Dict[str, str]:
         if mode == "desktop":

@@ -1,3 +1,5 @@
+import os
+
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout,
     QSplitter, QLabel, QPushButton, QButtonGroup, QRadioButton, QApplication
@@ -17,7 +19,7 @@ class EditorMainWindow(MainWindow):
         super().__init__()
 
         app = QApplication.instance()
-        app.aboutToQuit.connect(self._on_save)
+        app.aboutToQuit.connect(self._on_save_project)
 
         self.setWindowTitle(app.applicationName() + f" - {project_name}")
 
@@ -69,10 +71,14 @@ class EditorMainWindow(MainWindow):
         
         header_layout.addStretch()
         
-        self.save_button = QPushButton("Save")
-        self.save_button.clicked.connect(self._on_save)
-        header_layout.addWidget(self.save_button)
-        
+        self.save_project_button = QPushButton("Save project")
+        self.save_project_button.clicked.connect(self._on_save_project)
+        header_layout.addWidget(self.save_project_button)
+
+        self.save_stylesheet_button = QPushButton("Save stylesheet")
+        self.save_stylesheet_button.clicked.connect(self._on_save_stylesheet)
+        header_layout.addWidget(self.save_stylesheet_button)
+
         layout.addLayout(header_layout)
         
         # Main Splitter
@@ -130,7 +136,22 @@ class EditorMainWindow(MainWindow):
         css = self.renderer.render(self.project, mode)
         self.preview_widget.setStyleSheet(css)
 
-    def _on_save(self):
+    def _on_save_project(self):
         self._on_data_changed()
-        self.persistence.save(self.project)
+        self.persistence.save_project(self.project)
         self.statusBar().showMessage("Project saved", 2000)
+
+    def _on_save_stylesheet(self):
+        self._on_data_changed()
+
+        def save(mode):
+            css = self.renderer.render(self.project, mode)
+            filepath, extension = os.path.splitext(self.project.save_to_filepath)
+            print(self.project.save_to_filepath, filepath, extension)
+            with open(f"{filepath}-{mode}{extension}", "w") as f:
+                f.write(css)
+
+        save("desktop")
+        save("touch")
+
+        self.statusBar().showMessage("Stylesheet saved", 2000)

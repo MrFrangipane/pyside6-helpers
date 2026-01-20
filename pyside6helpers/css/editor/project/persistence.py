@@ -43,10 +43,10 @@ class ProjectPersistence:
             name=self.project_name,
             templates={k: "\n".join(v) if isinstance(v, list) else v for k, v in data.get('templates', {}).items()},
             variables=variables,
-            save_to=data.get('save_to', "")
+            save_to_filepath=data.get('save_to_filepath', "")
         )
 
-    def save(self, project: Project) -> None:
+    def save_project(self, project: Project) -> None:
         data = {
             'version': 1,
             'templates': {k: v.splitlines() for k, v in project.templates.items()},
@@ -57,7 +57,7 @@ class ProjectPersistence:
                     'touch_value': v.touch_value
                 } for v in project.variables
             ],
-            'save_to': project.save_to
+            'save_to_filepath': project.save_to_filepath
         }
         with open(self._project_filename, "w") as f:
             json.dump(data, f, indent=2)
