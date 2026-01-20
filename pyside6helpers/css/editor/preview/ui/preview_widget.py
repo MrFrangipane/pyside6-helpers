@@ -199,6 +199,7 @@ class PreviewWidget(QMainWindow):
 
         # Tab Widget (Nested)
         nested_tabs = QTabWidget()
+        nested_tabs.setTabPosition(QTabWidget.West)
         nested_tabs.addTab(QLabel("Content of Tab 1"), "Tab 1")
         nested_tabs.addTab(QLabel("Content of Tab 2"), "Tab 2")
         layout.addWidget(nested_tabs)

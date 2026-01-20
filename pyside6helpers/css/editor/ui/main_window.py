@@ -46,11 +46,16 @@ class EditorMainWindow(MainWindow):
         self.mode_group.addButton(self.desktop_radio)
         self.mode_group.addButton(self.touch_radio)
 
+        self.disabled_button = QPushButton("Disabled")
+        self.disabled_button.setCheckable(True)
+        self.disabled_button.clicked.connect(self._on_disabled_changed)
+
         # Set default state
         self.desktop_radio.setChecked(True)
 
         header_layout.addWidget(self.desktop_radio)
         header_layout.addWidget(self.touch_radio)
+        header_layout.addWidget(self.disabled_button)
 
         self.mode_group.buttonClicked.connect(self._on_mode_changed)
         
@@ -97,6 +102,9 @@ class EditorMainWindow(MainWindow):
         self.project.variables = self.variables_widget.get_variables()
         self.project.templates = self.templates_widget.get_sections()
         self._update_preview()
+
+    def _on_disabled_changed(self):
+        self.preview_widget.setDisabled(self.disabled_button.isChecked())
 
     def _on_mode_changed(self, mode):
         self._update_preview()
