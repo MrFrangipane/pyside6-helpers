@@ -1,8 +1,9 @@
 from PySide6.QtWidgets import (
-    QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
-    QSplitter, QLabel, QPushButton, QButtonGroup, QRadioButton
+    QWidget, QVBoxLayout, QHBoxLayout,
+    QSplitter, QLabel, QPushButton, QButtonGroup, QRadioButton, QApplication
 )
 from PySide6.QtCore import Qt
+from pyside6helpers.main_window import MainWindow
 
 from ..project.persistence import ProjectPersistence
 from ..project.css_renderer import CSSRenderer
@@ -11,12 +12,15 @@ from ..templates.ui.template_editor_widget import TemplateEditorWidget
 from ..preview.ui.preview_widget import PreviewWidget
 
 
-class MainWindow(QMainWindow):
+class EditorMainWindow(MainWindow):
     def __init__(self, project_name="default"):
         super().__init__()
-        self.setWindowTitle(f"CSS Editor 2 - {project_name}")
-        self.resize(1200, 800)
-        
+
+        app = QApplication.instance()
+        app.aboutToQuit.connect(self._on_save)
+
+        self.setWindowTitle(app.applicationName() + f" - {project_name}")
+
         self.project_name = project_name
         self.persistence = ProjectPersistence(project_name)
         self.renderer = CSSRenderer()
@@ -62,7 +66,7 @@ class MainWindow(QMainWindow):
         self.main_splitter = QSplitter(Qt.Horizontal)
         
         # Left side: Variables and Templates
-        self.left_splitter = QSplitter(Qt.Vertical)
+        self.left_splitter = QSplitter(Qt.Horizontal)
         
         self.variables_widget = VariablesWidget()
         self.variables_widget.changed.connect(self._on_data_changed)
@@ -87,6 +91,7 @@ class MainWindow(QMainWindow):
     def _load_project_into_ui(self):
         self.variables_widget.set_variables(self.project.variables)
         self.templates_widget.set_sections(self.project.templates)
+        self.statusBar().showMessage("Project loaded", 2000)
 
     def _on_data_changed(self):
         self.project.variables = self.variables_widget.get_variables()
