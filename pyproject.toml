@@ -3,8 +3,7 @@ requires = [
   "setuptools", "wheel",
   "PySide6",
   "jinja2",
-  "dateparser",
-  "python-helpers@git+https://github.com/MrFrangipane/python-helpers@main"
+  "dateparser"
 ]
 build-backend = "setuptools.build_meta"
 
