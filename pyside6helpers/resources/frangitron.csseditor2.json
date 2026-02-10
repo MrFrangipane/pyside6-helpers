@@ -30,7 +30,7 @@
       "}",
       "",
       "{{ interactives }}:focus {",
-      "  border: {{ line_size }}px solid {{ foreground }};",
+      "  border: {{ line_size }}px solid {{ focus_border }};",
       "}",
       "",
       "{{ interactives }}:hover {",
@@ -561,6 +561,11 @@
     {
       "name": "views_background_alt",
       "desktop_value": "[79, 79, 79]",
+      "touch_value": ""
+    },
+    {
+      "name": "focus_border",
+      "desktop_value": "[255, 255, 255, 160]",
       "touch_value": ""
     }
   ],

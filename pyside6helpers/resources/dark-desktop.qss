@@ -29,7 +29,7 @@ QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QDateEdit, QTime
 }
 
 QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QDateEdit:focus, QTimeEdit:focus, QDateTimeEdit:focus, QComboBox:focus, QPushButton:focus, QCheckBox:focus, QRadioButton:focus, QTabBar::tab:focus, QToolButton:focus, QSplitter::handle:focus, QSlider::handle:focus {
-  border: 1px solid rgb(252, 252, 252);
+  border: 1px solid rgba(255, 255, 255, 160);
 }
 
 QLineEdit:hover, QTextEdit:hover, QPlainTextEdit:hover, QSpinBox:hover, QDoubleSpinBox:hover, QDateEdit:hover, QTimeEdit:hover, QDateTimeEdit:hover, QComboBox:hover, QPushButton:hover, QCheckBox:hover, QRadioButton:hover, QTabBar::tab:hover, QToolButton:hover, QSplitter::handle:hover, QSlider::handle:hover {
