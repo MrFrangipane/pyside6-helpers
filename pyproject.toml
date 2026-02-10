@@ -1,16 +1,11 @@
 [build-system]
-requires = [
-  "setuptools", "wheel",
-  "PySide6",
-  "jinja2",
-  "dateparser"
-]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyside6-helpers"
 description = "Bits of code used to facilitate PySide6 based projects"
-version = "0.5.2"
+version = "0.5.3"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {file = "LICENSE"}
@@ -25,7 +20,15 @@ classifiers = [
   "Programming Language :: Python :: 3 :: Only",
 ]
 keywords = ["python", "pyside", "frangitron", "gui"]
-dynamic = ["dependencies"]
+dependencies = [
+  "PySide6",
+  "jinja2",
+  "dateparser"
+]
+
+[project.urls]
+Homepage = "https://github.com/mrfrangipane/pyside6-helpers"
+Repository = "https://github.com/mrfrangipane/pyside6-helpers"
 
 [tool.setuptools]
 include-package-data = true

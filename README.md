@@ -8,7 +8,7 @@ This project is alpha: expect breaking changes
 
 Icons made by [Freepik](https://www.freepik.com/) and found on [Flat Icon](https://www.flaticon.com)
 
-See [this page](icons.md) for usage and reference
+See [icons.md](icons.md) for usage and reference
 
 ## Notes
 
