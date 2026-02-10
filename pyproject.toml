@@ -5,10 +5,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pyside6-helpers"
 description = "Bits of code used to facilitate PySide6 based projects"
-version = "0.6.0"
+version = "0.6.1"
 readme = "README.md"
 requires-python = ">=3.11"
-license = {file = "LICENSE"}
+license-files = ["LICEN[CS]E*"]
 authors = [
   {name = "Mr Frangipane", email = "contact@frangipane.me" }
 ]
@@ -32,7 +32,10 @@ Repository = "https://github.com/mrfrangipane/pyside6-helpers"
 
 [tool.setuptools]
 include-package-data = true
-packages = ["pyside6helpers"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyside6helpers*"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
