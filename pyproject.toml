@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-  "setuptools",
+  "setuptools", "wheel",
   "PySide6",
   "jinja2",
   "dateparser",
